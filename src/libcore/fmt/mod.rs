@@ -1190,22 +1190,22 @@ impl<'a> Formatter<'a> {
     /// ```rust
     /// use std::fmt;
     ///
-    /// struct Foo {
-    ///     bar: i32,
+    /// struct Yeast {
+    ///     mold: i32,
     ///     baz: String,
     /// }
     ///
-    /// impl fmt::Debug for Foo {
+    /// impl fmt::Debug for Yeast {
     ///     fn fmt(&self, fmt: &mut fmt::Formatter) -> fmt::Result {
-    ///         fmt.debug_struct("Foo")
-    ///             .field("bar", &self.bar)
+    ///         fmt.debug_struct("Yeast")
+    ///             .field("mold", &self.mold)
     ///             .field("baz", &self.baz)
     ///             .finish()
     ///     }
     /// }
     ///
-    /// // prints "Foo { bar: 10, baz: "Hello World" }"
-    /// println!("{:?}", Foo { bar: 10, baz: "Hello World".to_string() });
+    /// // prints "Yeast { mold: 10, baz: "Hello World" }"
+    /// println!("{:?}", Yeast { mold: 10, baz: "Hello World".to_string() });
     /// ```
     #[stable(feature = "debug_builders", since = "1.2.0")]
     #[inline]
@@ -1221,19 +1221,19 @@ impl<'a> Formatter<'a> {
     /// ```rust
     /// use std::fmt;
     ///
-    /// struct Foo(i32, String);
+    /// struct Yeast(i32, String);
     ///
-    /// impl fmt::Debug for Foo {
+    /// impl fmt::Debug for Yeast {
     ///     fn fmt(&self, fmt: &mut fmt::Formatter) -> fmt::Result {
-    ///         fmt.debug_tuple("Foo")
+    ///         fmt.debug_tuple("Yeast")
     ///             .field(&self.0)
     ///             .field(&self.1)
     ///             .finish()
     ///     }
     /// }
     ///
-    /// // prints "Foo(10, "Hello World")"
-    /// println!("{:?}", Foo(10, "Hello World".to_string()));
+    /// // prints "Yeast(10, "Hello World")"
+    /// println!("{:?}", Yeast(10, "Hello World".to_string()));
     /// ```
     #[stable(feature = "debug_builders", since = "1.2.0")]
     #[inline]
@@ -1249,16 +1249,16 @@ impl<'a> Formatter<'a> {
     /// ```rust
     /// use std::fmt;
     ///
-    /// struct Foo(Vec<i32>);
+    /// struct Yeast(Vec<i32>);
     ///
-    /// impl fmt::Debug for Foo {
+    /// impl fmt::Debug for Yeast {
     ///     fn fmt(&self, fmt: &mut fmt::Formatter) -> fmt::Result {
     ///         fmt.debug_list().entries(self.0.iter()).finish()
     ///     }
     /// }
     ///
     /// // prints "[10, 11]"
-    /// println!("{:?}", Foo(vec![10, 11]));
+    /// println!("{:?}", Yeast(vec![10, 11]));
     /// ```
     #[stable(feature = "debug_builders", since = "1.2.0")]
     #[inline]
@@ -1274,16 +1274,16 @@ impl<'a> Formatter<'a> {
     /// ```rust
     /// use std::fmt;
     ///
-    /// struct Foo(Vec<i32>);
+    /// struct Yeast(Vec<i32>);
     ///
-    /// impl fmt::Debug for Foo {
+    /// impl fmt::Debug for Yeast {
     ///     fn fmt(&self, fmt: &mut fmt::Formatter) -> fmt::Result {
     ///         fmt.debug_set().entries(self.0.iter()).finish()
     ///     }
     /// }
     ///
     /// // prints "{10, 11}"
-    /// println!("{:?}", Foo(vec![10, 11]));
+    /// println!("{:?}", Yeast(vec![10, 11]));
     /// ```
     #[stable(feature = "debug_builders", since = "1.2.0")]
     #[inline]
@@ -1299,16 +1299,16 @@ impl<'a> Formatter<'a> {
     /// ```rust
     /// use std::fmt;
     ///
-    /// struct Foo(Vec<(String, i32)>);
+    /// struct Yeast(Vec<(String, i32)>);
     ///
-    /// impl fmt::Debug for Foo {
+    /// impl fmt::Debug for Yeast {
     ///     fn fmt(&self, fmt: &mut fmt::Formatter) -> fmt::Result {
     ///         fmt.debug_map().entries(self.0.iter().map(|&(ref k, ref v)| (k, v))).finish()
     ///     }
     /// }
     ///
     /// // prints "{"A": 10, "B": 11}"
-    /// println!("{:?}", Foo(vec![("A".to_string(), 10), ("B".to_string(), 11)]));
+    /// println!("{:?}", Yeast(vec![("A".to_string(), 10), ("B".to_string(), 11)]));
     /// ```
     #[stable(feature = "debug_builders", since = "1.2.0")]
     #[inline]

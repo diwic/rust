@@ -128,7 +128,7 @@ impl fmt::Debug for LookupHost {
 ///
 /// use std::net;
 ///
-/// # fn foo() -> std::io::Result<()> {
+/// # fn yeast() -> std::io::Result<()> {
 /// for host in try!(net::lookup_host("rust-lang.org")) {
 ///     println!("found address: {}", host);
 /// }

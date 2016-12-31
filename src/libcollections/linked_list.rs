@@ -329,7 +329,7 @@ impl<T> LinkedList<T> {
     /// let mut dl = LinkedList::new();
     /// assert!(dl.is_empty());
     ///
-    /// dl.push_front("foo");
+    /// dl.push_front("yeast");
     /// assert!(!dl.is_empty());
     /// ```
     #[inline]

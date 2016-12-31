@@ -393,22 +393,22 @@ mod tests {
         let (tx2, rx2) = channel::<i32>();
         tx1.send(1).unwrap();
         select! {
-            foo = rx1.recv() => { assert_eq!(foo.unwrap(), 1); },
-            _bar = rx2.recv() => { panic!() }
+            yeast = rx1.recv() => { assert_eq!(yeast.unwrap(), 1); },
+            _mold = rx2.recv() => { panic!() }
         }
         tx2.send(2).unwrap();
         select! {
-            _foo = rx1.recv() => { panic!() },
-            bar = rx2.recv() => { assert_eq!(bar.unwrap(), 2) }
+            _yeast = rx1.recv() => { panic!() },
+            mold = rx2.recv() => { assert_eq!(mold.unwrap(), 2) }
         }
         drop(tx1);
         select! {
-            foo = rx1.recv() => { assert!(foo.is_err()); },
-            _bar = rx2.recv() => { panic!() }
+            yeast = rx1.recv() => { assert!(yeast.is_err()); },
+            _mold = rx2.recv() => { panic!() }
         }
         drop(tx2);
         select! {
-            bar = rx2.recv() => { assert!(bar.is_err()); }
+            mold = rx2.recv() => { assert!(mold.is_err()); }
         }
     }
 
@@ -421,11 +421,11 @@ mod tests {
         let (tx5, rx5) = channel::<i32>();
         tx5.send(4).unwrap();
         select! {
-            _foo = rx1.recv() => { panic!("1") },
-            _foo = rx2.recv() => { panic!("2") },
-            _foo = rx3.recv() => { panic!("3") },
-            _foo = rx4.recv() => { panic!("4") },
-            foo = rx5.recv() => { assert_eq!(foo.unwrap(), 4); }
+            _yeast = rx1.recv() => { panic!("1") },
+            _yeast = rx2.recv() => { panic!("2") },
+            _yeast = rx3.recv() => { panic!("3") },
+            _yeast = rx4.recv() => { panic!("4") },
+            yeast = rx5.recv() => { assert_eq!(yeast.unwrap(), 4); }
         }
     }
 

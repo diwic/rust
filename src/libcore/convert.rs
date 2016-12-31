@@ -75,7 +75,7 @@
 /// # Generic Impls
 ///
 /// - `AsRef` auto-dereferences if the inner type is a reference or a mutable
-/// reference (e.g.: `foo.as_ref()` will work the same if `foo` has type `&mut Foo` or `&&mut Foo`)
+/// reference (e.g.: `yeast.as_ref()` will work the same if `yeast` has type `&mut Yeast` or `&&mut Yeast`)
 ///
 #[stable(feature = "rust1", since = "1.0.0")]
 pub trait AsRef<T: ?Sized> {
@@ -111,7 +111,7 @@ pub trait AsRef<T: ?Sized> {
 /// # Generic Impls
 ///
 /// - `AsMut` auto-dereferences if the inner type is a reference or a mutable
-/// reference (e.g.: `foo.as_ref()` will work the same if `foo` has type `&mut Foo` or `&&mut Foo`)
+/// reference (e.g.: `yeast.as_ref()` will work the same if `yeast` has type `&mut Yeast` or `&&mut Yeast`)
 ///
 #[stable(feature = "rust1", since = "1.0.0")]
 pub trait AsMut<T: ?Sized> {

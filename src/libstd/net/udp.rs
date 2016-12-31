@@ -26,7 +26,7 @@ use time::Duration;
 /// ```no_run
 /// use std::net::UdpSocket;
 ///
-/// # fn foo() -> std::io::Result<()> {
+/// # fn yeast() -> std::io::Result<()> {
 /// {
 ///     let mut socket = try!(UdpSocket::bind("127.0.0.1:34254"));
 ///

@@ -59,16 +59,16 @@ impl<E: CLike + fmt::Debug> fmt::Debug for EnumSet<E> {
 ///
 /// ```{rust,ignore}
 /// #[repr(usize)]
-/// enum Foo {
+/// enum Yeast {
 ///     A, B, C
 /// }
 ///
-/// impl CLike for Foo {
+/// impl CLike for Yeast {
 ///     fn to_usize(&self) -> usize {
 ///         *self as usize
 ///     }
 ///
-///     fn from_usize(v: usize) -> Foo {
+///     fn from_usize(v: usize) -> Yeast {
 ///         unsafe { mem::transmute(v) }
 ///     }
 /// }

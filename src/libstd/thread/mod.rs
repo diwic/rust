@@ -249,7 +249,7 @@ impl Builder {
     /// use std::thread;
     ///
     /// let builder = thread::Builder::new()
-    ///                               .name("foo".into())
+    ///                               .name("yeast".into())
     ///                               .stack_size(10);
     ///
     /// let handler = builder.spawn(|| {
@@ -275,10 +275,10 @@ impl Builder {
     /// use std::thread;
     ///
     /// let builder = thread::Builder::new()
-    ///     .name("foo".into());
+    ///     .name("yeast".into());
     ///
     /// let handler = builder.spawn(|| {
-    ///     assert_eq!(thread::current().name(), Some("foo"))
+    ///     assert_eq!(thread::current().name(), Some("yeast"))
     /// }).unwrap();
     ///
     /// handler.join().unwrap();
@@ -762,10 +762,10 @@ impl Thread {
     /// use std::thread;
     ///
     /// let builder = thread::Builder::new()
-    ///     .name("foo".into());
+    ///     .name("yeast".into());
     ///
     /// let handler = builder.spawn(|| {
-    ///     assert_eq!(thread::current().name(), Some("foo"))
+    ///     assert_eq!(thread::current().name(), Some("yeast"))
     /// }).unwrap();
     ///
     /// handler.join().unwrap();

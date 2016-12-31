@@ -75,7 +75,7 @@ pub fn output_fileline(w: &mut Write, file: &[u8], line: libc::c_int,
 // 2. For each element of the path, emit the length plus the element
 // 3. End the path with "E"
 //
-// For example, "_ZN4testE" => "test" and "_ZN3foo3barE" => "foo::bar".
+// For example, "_ZN4testE" => "test" and "_ZN3yeast3moldE" => "yeast::mold".
 //
 // We're the ones printing our backtraces, so we can't rely on anything else to
 // demangle our symbols. It's *much* nicer to look at demangled symbols, so
@@ -224,22 +224,22 @@ mod tests {
     fn demangle_dollars() {
         t!("_ZN4$RP$E", ")");
         t!("_ZN8$RF$testE", "&test");
-        t!("_ZN8$BP$test4foobE", "*test::foob");
-        t!("_ZN9$u20$test4foobE", " test::foob");
-        t!("_ZN35Bar$LT$$u5b$u32$u3b$$u20$4$u5d$$GT$E", "Bar<[u32; 4]>");
+        t!("_ZN8$BP$test4yeastbE", "*test::yeastb");
+        t!("_ZN9$u20$test4yeastbE", " test::yeastb");
+        t!("_ZN35Mold$LT$$u5b$u32$u3b$$u20$4$u5d$$GT$E", "Mold<[u32; 4]>");
     }
 
     #[test]
     fn demangle_many_dollars() {
-        t!("_ZN13test$u20$test4foobE", "test test::foob");
-        t!("_ZN12test$BP$test4foobE", "test*test::foob");
+        t!("_ZN13test$u20$test4yeastbE", "test test::yeastb");
+        t!("_ZN12test$BP$test4yeastbE", "test*test::yeastb");
     }
 
     #[test]
     fn demangle_windows() {
         t!("ZN4testE", "test");
-        t!("ZN13test$u20$test4foobE", "test test::foob");
-        t!("ZN12test$RF$test4foobE", "test&test::foob");
+        t!("ZN13test$u20$test4yeastbE", "test test::yeastb");
+        t!("ZN12test$RF$test4yeastbE", "test&test::yeastb");
     }
 
     #[test]
@@ -251,7 +251,7 @@ mod tests {
 
     #[test]
     fn demangle_trait_impls() {
-        t!("_ZN71_$LT$Test$u20$$u2b$$u20$$u27$static$u20$as$u20$foo..Bar$LT$Test$GT$$GT$3barE",
-           "<Test + 'static as foo::Bar<Test>>::bar");
+        t!("_ZN71_$LT$Test$u20$$u2b$$u20$$u27$static$u20$as$u20$yeast..Mold$LT$Test$GT$$GT$3moldE",
+           "<Test + 'static as yeast::Mold<Test>>::mold");
     }
 }

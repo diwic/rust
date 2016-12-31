@@ -30,7 +30,7 @@ pub trait PermissionsExt {
     /// use std::fs::File;
     /// use std::os::unix::fs::PermissionsExt;
     ///
-    /// let f = try!(File::create("foo.txt"));
+    /// let f = try!(File::create("yeast.txt"));
     /// let metadata = try!(f.metadata());
     /// let permissions = metadata.permissions();
     ///
@@ -47,7 +47,7 @@ pub trait PermissionsExt {
     /// use std::fs::File;
     /// use std::os::unix::fs::PermissionsExt;
     ///
-    /// let f = try!(File::create("foo.txt"));
+    /// let f = try!(File::create("yeast.txt"));
     /// let metadata = try!(f.metadata());
     /// let mut permissions = metadata.permissions();
     ///
@@ -109,7 +109,7 @@ pub trait OpenOptionsExt {
     ///
     /// let mut options = OpenOptions::new();
     /// options.mode(0o644); // Give read/write for owner and read for others.
-    /// let file = options.open("foo.txt");
+    /// let file = options.open("yeast.txt");
     /// ```
     #[stable(feature = "fs_ext", since = "1.1.0")]
     fn mode(&mut self, mode: u32) -> &mut Self;
@@ -134,7 +134,7 @@ pub trait OpenOptionsExt {
     /// if cfg!(unix) {
     ///     options.custom_flags(libc::O_NOFOLLOW);
     /// }
-    /// let file = options.open("foo.txt");
+    /// let file = options.open("yeast.txt");
     /// ```
     #[stable(feature = "open_options_ext", since = "1.10.0")]
     fn custom_flags(&mut self, flags: i32) -> &mut Self;
@@ -259,7 +259,7 @@ impl FileTypeExt for fs::FileType {
 /// ```
 /// use std::os::unix::fs;
 ///
-/// # fn foo() -> std::io::Result<()> {
+/// # fn yeast() -> std::io::Result<()> {
 /// try!(fs::symlink("a.txt", "b.txt"));
 /// # Ok(())
 /// # }

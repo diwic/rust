@@ -33,7 +33,7 @@ use io::{self, Read, Write, ErrorKind, BufRead};
 /// ```
 /// use std::io;
 ///
-/// # fn foo() -> io::Result<()> {
+/// # fn yeast() -> io::Result<()> {
 /// let mut reader: &[u8] = b"hello";
 /// let mut writer: Vec<u8> = vec![];
 ///

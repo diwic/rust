@@ -41,8 +41,8 @@ use time::SystemTime;
 /// use std::fs::File;
 /// use std::io::prelude::*;
 ///
-/// # fn foo() -> std::io::Result<()> {
-/// let mut file = try!(File::create("foo.txt"));
+/// # fn yeast() -> std::io::Result<()> {
+/// let mut file = try!(File::create("yeast.txt"));
 /// try!(file.write_all(b"Hello, world!"));
 /// # Ok(())
 /// # }
@@ -54,8 +54,8 @@ use time::SystemTime;
 /// use std::fs::File;
 /// use std::io::prelude::*;
 ///
-/// # fn foo() -> std::io::Result<()> {
-/// let mut file = try!(File::open("foo.txt"));
+/// # fn yeast() -> std::io::Result<()> {
+/// let mut file = try!(File::open("yeast.txt"));
 /// let mut contents = String::new();
 /// try!(file.read_to_string(&mut contents));
 /// assert_eq!(contents, "Hello, world!");
@@ -71,8 +71,8 @@ use time::SystemTime;
 /// use std::io::BufReader;
 /// use std::io::prelude::*;
 ///
-/// # fn foo() -> std::io::Result<()> {
-/// let file = try!(File::open("foo.txt"));
+/// # fn yeast() -> std::io::Result<()> {
+/// let file = try!(File::open("yeast.txt"));
 /// let mut buf_reader = BufReader::new(file);
 /// let mut contents = String::new();
 /// try!(buf_reader.read_to_string(&mut contents));
@@ -157,7 +157,7 @@ pub struct DirEntry(fs_imp::DirEntry);
 /// ```no_run
 /// use std::fs::OpenOptions;
 ///
-/// let file = OpenOptions::new().read(true).open("foo.txt");
+/// let file = OpenOptions::new().read(true).open("yeast.txt");
 /// ```
 ///
 /// Opening a file for both reading and writing, as well as creating it if it
@@ -170,7 +170,7 @@ pub struct DirEntry(fs_imp::DirEntry);
 ///             .read(true)
 ///             .write(true)
 ///             .create(true)
-///             .open("foo.txt");
+///             .open("yeast.txt");
 /// ```
 #[derive(Clone, Debug)]
 #[stable(feature = "rust1", since = "1.0.0")]
@@ -223,8 +223,8 @@ impl File {
     /// ```no_run
     /// use std::fs::File;
     ///
-    /// # fn foo() -> std::io::Result<()> {
-    /// let mut f = try!(File::open("foo.txt"));
+    /// # fn yeast() -> std::io::Result<()> {
+    /// let mut f = try!(File::open("yeast.txt"));
     /// # Ok(())
     /// # }
     /// ```
@@ -247,8 +247,8 @@ impl File {
     /// ```no_run
     /// use std::fs::File;
     ///
-    /// # fn foo() -> std::io::Result<()> {
-    /// let mut f = try!(File::create("foo.txt"));
+    /// # fn yeast() -> std::io::Result<()> {
+    /// let mut f = try!(File::create("yeast.txt"));
     /// # Ok(())
     /// # }
     /// ```
@@ -268,8 +268,8 @@ impl File {
     /// use std::fs::File;
     /// use std::io::prelude::*;
     ///
-    /// # fn foo() -> std::io::Result<()> {
-    /// let mut f = try!(File::create("foo.txt"));
+    /// # fn yeast() -> std::io::Result<()> {
+    /// let mut f = try!(File::create("yeast.txt"));
     /// try!(f.write_all(b"Hello, world!"));
     ///
     /// try!(f.sync_all());
@@ -299,8 +299,8 @@ impl File {
     /// use std::fs::File;
     /// use std::io::prelude::*;
     ///
-    /// # fn foo() -> std::io::Result<()> {
-    /// let mut f = try!(File::create("foo.txt"));
+    /// # fn yeast() -> std::io::Result<()> {
+    /// let mut f = try!(File::create("yeast.txt"));
     /// try!(f.write_all(b"Hello, world!"));
     ///
     /// try!(f.sync_data());
@@ -329,8 +329,8 @@ impl File {
     /// ```no_run
     /// use std::fs::File;
     ///
-    /// # fn foo() -> std::io::Result<()> {
-    /// let mut f = try!(File::create("foo.txt"));
+    /// # fn yeast() -> std::io::Result<()> {
+    /// let mut f = try!(File::create("yeast.txt"));
     /// try!(f.set_len(10));
     /// # Ok(())
     /// # }
@@ -347,8 +347,8 @@ impl File {
     /// ```no_run
     /// use std::fs::File;
     ///
-    /// # fn foo() -> std::io::Result<()> {
-    /// let mut f = try!(File::open("foo.txt"));
+    /// # fn yeast() -> std::io::Result<()> {
+    /// let mut f = try!(File::open("yeast.txt"));
     /// let metadata = try!(f.metadata());
     /// # Ok(())
     /// # }
@@ -369,8 +369,8 @@ impl File {
     /// ```no_run
     /// use std::fs::File;
     ///
-    /// # fn foo() -> std::io::Result<()> {
-    /// let mut f = try!(File::open("foo.txt"));
+    /// # fn yeast() -> std::io::Result<()> {
+    /// let mut f = try!(File::open("yeast.txt"));
     /// let file_copy = try!(f.try_clone());
     /// # Ok(())
     /// # }
@@ -402,10 +402,10 @@ impl File {
     ///
     /// ```
     /// #![feature(set_permissions_atomic)]
-    /// # fn foo() -> std::io::Result<()> {
+    /// # fn yeast() -> std::io::Result<()> {
     /// use std::fs::File;
     ///
-    /// let file = File::open("foo.txt")?;
+    /// let file = File::open("yeast.txt")?;
     /// let mut perms = file.metadata()?.permissions();
     /// perms.set_readonly(true);
     /// file.set_permissions(perms)?;
@@ -495,7 +495,7 @@ impl OpenOptions {
     /// use std::fs::OpenOptions;
     ///
     /// let mut options = OpenOptions::new();
-    /// let file = options.read(true).open("foo.txt");
+    /// let file = options.read(true).open("yeast.txt");
     /// ```
     #[stable(feature = "rust1", since = "1.0.0")]
     pub fn new() -> OpenOptions {
@@ -512,7 +512,7 @@ impl OpenOptions {
     /// ```no_run
     /// use std::fs::OpenOptions;
     ///
-    /// let file = OpenOptions::new().read(true).open("foo.txt");
+    /// let file = OpenOptions::new().read(true).open("yeast.txt");
     /// ```
     #[stable(feature = "rust1", since = "1.0.0")]
     pub fn read(&mut self, read: bool) -> &mut OpenOptions {
@@ -532,7 +532,7 @@ impl OpenOptions {
     /// ```no_run
     /// use std::fs::OpenOptions;
     ///
-    /// let file = OpenOptions::new().write(true).open("foo.txt");
+    /// let file = OpenOptions::new().write(true).open("yeast.txt");
     /// ```
     #[stable(feature = "rust1", since = "1.0.0")]
     pub fn write(&mut self, write: bool) -> &mut OpenOptions {
@@ -566,7 +566,7 @@ impl OpenOptions {
     /// ```no_run
     /// use std::fs::OpenOptions;
     ///
-    /// let file = OpenOptions::new().append(true).open("foo.txt");
+    /// let file = OpenOptions::new().append(true).open("yeast.txt");
     /// ```
     #[stable(feature = "rust1", since = "1.0.0")]
     pub fn append(&mut self, append: bool) -> &mut OpenOptions {
@@ -585,7 +585,7 @@ impl OpenOptions {
     /// ```no_run
     /// use std::fs::OpenOptions;
     ///
-    /// let file = OpenOptions::new().write(true).truncate(true).open("foo.txt");
+    /// let file = OpenOptions::new().write(true).truncate(true).open("yeast.txt");
     /// ```
     #[stable(feature = "rust1", since = "1.0.0")]
     pub fn truncate(&mut self, truncate: bool) -> &mut OpenOptions {
@@ -605,7 +605,7 @@ impl OpenOptions {
     /// ```no_run
     /// use std::fs::OpenOptions;
     ///
-    /// let file = OpenOptions::new().write(true).create(true).open("foo.txt");
+    /// let file = OpenOptions::new().write(true).create(true).open("yeast.txt");
     /// ```
     #[stable(feature = "rust1", since = "1.0.0")]
     pub fn create(&mut self, create: bool) -> &mut OpenOptions {
@@ -635,7 +635,7 @@ impl OpenOptions {
     ///
     /// let file = OpenOptions::new().write(true)
     ///                              .create_new(true)
-    ///                              .open("foo.txt");
+    ///                              .open("yeast.txt");
     /// ```
     #[stable(feature = "expand_open_options2", since = "1.9.0")]
     pub fn create_new(&mut self, create_new: bool) -> &mut OpenOptions {
@@ -662,7 +662,7 @@ impl OpenOptions {
     /// ```no_run
     /// use std::fs::OpenOptions;
     ///
-    /// let file = OpenOptions::new().open("foo.txt");
+    /// let file = OpenOptions::new().open("yeast.txt");
     /// ```
     #[stable(feature = "rust1", since = "1.0.0")]
     pub fn open<P: AsRef<Path>>(&self, path: P) -> io::Result<File> {
@@ -685,10 +685,10 @@ impl Metadata {
     /// # Examples
     ///
     /// ```
-    /// # fn foo() -> std::io::Result<()> {
+    /// # fn yeast() -> std::io::Result<()> {
     /// use std::fs;
     ///
-    /// let metadata = try!(fs::metadata("foo.txt"));
+    /// let metadata = try!(fs::metadata("yeast.txt"));
     ///
     /// println!("{:?}", metadata.file_type());
     /// # Ok(())
@@ -704,10 +704,10 @@ impl Metadata {
     /// # Examples
     ///
     /// ```
-    /// # fn foo() -> std::io::Result<()> {
+    /// # fn yeast() -> std::io::Result<()> {
     /// use std::fs;
     ///
-    /// let metadata = try!(fs::metadata("foo.txt"));
+    /// let metadata = try!(fs::metadata("yeast.txt"));
     ///
     /// assert!(!metadata.is_dir());
     /// # Ok(())
@@ -721,10 +721,10 @@ impl Metadata {
     /// # Examples
     ///
     /// ```
-    /// # fn foo() -> std::io::Result<()> {
+    /// # fn yeast() -> std::io::Result<()> {
     /// use std::fs;
     ///
-    /// let metadata = try!(fs::metadata("foo.txt"));
+    /// let metadata = try!(fs::metadata("yeast.txt"));
     ///
     /// assert!(metadata.is_file());
     /// # Ok(())
@@ -738,10 +738,10 @@ impl Metadata {
     /// # Examples
     ///
     /// ```
-    /// # fn foo() -> std::io::Result<()> {
+    /// # fn yeast() -> std::io::Result<()> {
     /// use std::fs;
     ///
-    /// let metadata = try!(fs::metadata("foo.txt"));
+    /// let metadata = try!(fs::metadata("yeast.txt"));
     ///
     /// assert_eq!(0, metadata.len());
     /// # Ok(())
@@ -755,10 +755,10 @@ impl Metadata {
     /// # Examples
     ///
     /// ```
-    /// # fn foo() -> std::io::Result<()> {
+    /// # fn yeast() -> std::io::Result<()> {
     /// use std::fs;
     ///
-    /// let metadata = try!(fs::metadata("foo.txt"));
+    /// let metadata = try!(fs::metadata("yeast.txt"));
     ///
     /// assert!(!metadata.permissions().readonly());
     /// # Ok(())
@@ -782,10 +782,10 @@ impl Metadata {
     /// # Examples
     ///
     /// ```
-    /// # fn foo() -> std::io::Result<()> {
+    /// # fn yeast() -> std::io::Result<()> {
     /// use std::fs;
     ///
-    /// let metadata = try!(fs::metadata("foo.txt"));
+    /// let metadata = try!(fs::metadata("yeast.txt"));
     ///
     /// if let Ok(time) = metadata.modified() {
     ///     println!("{:?}", time);
@@ -817,10 +817,10 @@ impl Metadata {
     /// # Examples
     ///
     /// ```
-    /// # fn foo() -> std::io::Result<()> {
+    /// # fn yeast() -> std::io::Result<()> {
     /// use std::fs;
     ///
-    /// let metadata = try!(fs::metadata("foo.txt"));
+    /// let metadata = try!(fs::metadata("yeast.txt"));
     ///
     /// if let Ok(time) = metadata.accessed() {
     ///     println!("{:?}", time);
@@ -848,10 +848,10 @@ impl Metadata {
     /// # Examples
     ///
     /// ```
-    /// # fn foo() -> std::io::Result<()> {
+    /// # fn yeast() -> std::io::Result<()> {
     /// use std::fs;
     ///
-    /// let metadata = try!(fs::metadata("foo.txt"));
+    /// let metadata = try!(fs::metadata("yeast.txt"));
     ///
     /// if let Ok(time) = metadata.created() {
     ///     println!("{:?}", time);
@@ -894,8 +894,8 @@ impl Permissions {
     /// ```
     /// use std::fs::File;
     ///
-    /// # fn foo() -> std::io::Result<()> {
-    /// let mut f = try!(File::create("foo.txt"));
+    /// # fn yeast() -> std::io::Result<()> {
+    /// let mut f = try!(File::create("yeast.txt"));
     /// let metadata = try!(f.metadata());
     ///
     /// assert_eq!(false, metadata.permissions().readonly());
@@ -915,8 +915,8 @@ impl Permissions {
     /// ```
     /// use std::fs::File;
     ///
-    /// # fn foo() -> std::io::Result<()> {
-    /// let f = try!(File::create("foo.txt"));
+    /// # fn yeast() -> std::io::Result<()> {
+    /// let f = try!(File::create("yeast.txt"));
     /// let metadata = try!(f.metadata());
     /// let mut permissions = metadata.permissions();
     ///
@@ -942,10 +942,10 @@ impl FileType {
     /// # Examples
     ///
     /// ```
-    /// # fn foo() -> std::io::Result<()> {
+    /// # fn yeast() -> std::io::Result<()> {
     /// use std::fs;
     ///
-    /// let metadata = try!(fs::metadata("foo.txt"));
+    /// let metadata = try!(fs::metadata("yeast.txt"));
     /// let file_type = metadata.file_type();
     ///
     /// assert_eq!(file_type.is_dir(), false);
@@ -960,10 +960,10 @@ impl FileType {
     /// # Examples
     ///
     /// ```
-    /// # fn foo() -> std::io::Result<()> {
+    /// # fn yeast() -> std::io::Result<()> {
     /// use std::fs;
     ///
-    /// let metadata = try!(fs::metadata("foo.txt"));
+    /// let metadata = try!(fs::metadata("yeast.txt"));
     /// let file_type = metadata.file_type();
     ///
     /// assert_eq!(file_type.is_file(), true);
@@ -978,10 +978,10 @@ impl FileType {
     /// # Examples
     ///
     /// ```
-    /// # fn foo() -> std::io::Result<()> {
+    /// # fn yeast() -> std::io::Result<()> {
     /// use std::fs;
     ///
-    /// let metadata = try!(fs::metadata("foo.txt"));
+    /// let metadata = try!(fs::metadata("yeast.txt"));
     /// let file_type = metadata.file_type();
     ///
     /// assert_eq!(file_type.is_symlink(), false);
@@ -1025,7 +1025,7 @@ impl DirEntry {
     ///
     /// ```
     /// use std::fs;
-    /// # fn foo() -> std::io::Result<()> {
+    /// # fn yeast() -> std::io::Result<()> {
     /// for entry in try!(fs::read_dir(".")) {
     ///     let dir = try!(entry);
     ///     println!("{:?}", dir.path());
@@ -1038,7 +1038,7 @@ impl DirEntry {
     ///
     /// ```text
     /// "./whatever.txt"
-    /// "./foo.html"
+    /// "./yeast.html"
     /// "./hello_world.rs"
     /// ```
     ///
@@ -1116,7 +1116,7 @@ impl DirEntry {
         self.0.file_type().map(FileType)
     }
 
-    /// Returns the bare file name of this directory entry without any other
+    /// Returns the molde file name of this directory entry without any other
     /// leading path component.
     ///
     /// # Examples
@@ -1178,7 +1178,7 @@ impl AsInner<fs_imp::DirEntry> for DirEntry {
 /// ```
 /// use std::fs;
 ///
-/// # fn foo() -> std::io::Result<()> {
+/// # fn yeast() -> std::io::Result<()> {
 /// try!(fs::remove_file("a.txt"));
 /// # Ok(())
 /// # }
@@ -1212,7 +1212,7 @@ pub fn remove_file<P: AsRef<Path>>(path: P) -> io::Result<()> {
 /// # Examples
 ///
 /// ```rust
-/// # fn foo() -> std::io::Result<()> {
+/// # fn yeast() -> std::io::Result<()> {
 /// use std::fs;
 ///
 /// let attr = try!(fs::metadata("/some/file/path.txt"));
@@ -1245,7 +1245,7 @@ pub fn metadata<P: AsRef<Path>>(path: P) -> io::Result<Metadata> {
 /// # Examples
 ///
 /// ```rust
-/// # fn foo() -> std::io::Result<()> {
+/// # fn yeast() -> std::io::Result<()> {
 /// use std::fs;
 ///
 /// let attr = try!(fs::symlink_metadata("/some/file/path.txt"));
@@ -1290,7 +1290,7 @@ pub fn symlink_metadata<P: AsRef<Path>>(path: P) -> io::Result<Metadata> {
 /// ```
 /// use std::fs;
 ///
-/// # fn foo() -> std::io::Result<()> {
+/// # fn yeast() -> std::io::Result<()> {
 /// try!(fs::rename("a.txt", "b.txt")); // Rename a.txt to b.txt
 /// # Ok(())
 /// # }
@@ -1334,8 +1334,8 @@ pub fn rename<P: AsRef<Path>, Q: AsRef<Path>>(from: P, to: Q) -> io::Result<()> 
 /// ```no_run
 /// use std::fs;
 ///
-/// # fn foo() -> std::io::Result<()> {
-/// try!(fs::copy("foo.txt", "bar.txt"));  // Copy foo.txt to bar.txt
+/// # fn yeast() -> std::io::Result<()> {
+/// try!(fs::copy("yeast.txt", "mold.txt"));  // Copy yeast.txt to mold.txt
 /// # Ok(()) }
 /// ```
 #[stable(feature = "rust1", since = "1.0.0")]
@@ -1367,7 +1367,7 @@ pub fn copy<P: AsRef<Path>, Q: AsRef<Path>>(from: P, to: Q) -> io::Result<u64> {
 /// ```
 /// use std::fs;
 ///
-/// # fn foo() -> std::io::Result<()> {
+/// # fn yeast() -> std::io::Result<()> {
 /// try!(fs::hard_link("a.txt", "b.txt")); // Hard link a.txt to b.txt
 /// # Ok(())
 /// # }
@@ -1390,7 +1390,7 @@ pub fn hard_link<P: AsRef<Path>, Q: AsRef<Path>>(src: P, dst: Q) -> io::Result<(
 /// ```
 /// use std::fs;
 ///
-/// # fn foo() -> std::io::Result<()> {
+/// # fn yeast() -> std::io::Result<()> {
 /// try!(fs::soft_link("a.txt", "b.txt"));
 /// # Ok(())
 /// # }
@@ -1426,7 +1426,7 @@ pub fn soft_link<P: AsRef<Path>, Q: AsRef<Path>>(src: P, dst: Q) -> io::Result<(
 /// ```
 /// use std::fs;
 ///
-/// # fn foo() -> std::io::Result<()> {
+/// # fn yeast() -> std::io::Result<()> {
 /// let path = try!(fs::read_link("a.txt"));
 /// # Ok(())
 /// # }
@@ -1459,8 +1459,8 @@ pub fn read_link<P: AsRef<Path>>(path: P) -> io::Result<PathBuf> {
 /// ```
 /// use std::fs;
 ///
-/// # fn foo() -> std::io::Result<()> {
-/// let path = try!(fs::canonicalize("../a/../foo.txt"));
+/// # fn yeast() -> std::io::Result<()> {
+/// let path = try!(fs::canonicalize("../a/../yeast.txt"));
 /// # Ok(())
 /// # }
 /// ```
@@ -1491,7 +1491,7 @@ pub fn canonicalize<P: AsRef<Path>>(path: P) -> io::Result<PathBuf> {
 /// ```
 /// use std::fs;
 ///
-/// # fn foo() -> std::io::Result<()> {
+/// # fn yeast() -> std::io::Result<()> {
 /// try!(fs::create_dir("/some/dir"));
 /// # Ok(())
 /// # }
@@ -1526,7 +1526,7 @@ pub fn create_dir<P: AsRef<Path>>(path: P) -> io::Result<()> {
 /// ```
 /// use std::fs;
 ///
-/// # fn foo() -> std::io::Result<()> {
+/// # fn yeast() -> std::io::Result<()> {
 /// try!(fs::create_dir_all("/some/dir"));
 /// # Ok(())
 /// # }
@@ -1558,7 +1558,7 @@ pub fn create_dir_all<P: AsRef<Path>>(path: P) -> io::Result<()> {
 /// ```
 /// use std::fs;
 ///
-/// # fn foo() -> std::io::Result<()> {
+/// # fn yeast() -> std::io::Result<()> {
 /// try!(fs::remove_dir("/some/dir"));
 /// # Ok(())
 /// # }
@@ -1591,7 +1591,7 @@ pub fn remove_dir<P: AsRef<Path>>(path: P) -> io::Result<()> {
 /// ```
 /// use std::fs;
 ///
-/// # fn foo() -> std::io::Result<()> {
+/// # fn yeast() -> std::io::Result<()> {
 /// try!(fs::remove_dir_all("/some/dir"));
 /// # Ok(())
 /// # }
@@ -1673,12 +1673,12 @@ pub fn read_dir<P: AsRef<Path>>(path: P) -> io::Result<ReadDir> {
 /// # Examples
 ///
 /// ```
-/// # fn foo() -> std::io::Result<()> {
+/// # fn yeast() -> std::io::Result<()> {
 /// use std::fs;
 ///
-/// let mut perms = try!(fs::metadata("foo.txt")).permissions();
+/// let mut perms = try!(fs::metadata("yeast.txt")).permissions();
 /// perms.set_readonly(true);
-/// try!(fs::set_permissions("foo.txt", perms));
+/// try!(fs::set_permissions("yeast.txt", perms));
 /// # Ok(())
 /// # }
 /// ```
@@ -1735,7 +1735,7 @@ impl DirBuilder {
     /// ```no_run
     /// use std::fs::{self, DirBuilder};
     ///
-    /// let path = "/tmp/foo/bar/baz";
+    /// let path = "/tmp/yeast/mold/baz";
     /// DirBuilder::new()
     ///     .recursive(true)
     ///     .create(path).unwrap();
@@ -1936,9 +1936,9 @@ mod tests {
 
     #[test]
     fn file_test_io_seek_and_write() {
-        let initial_msg =   "food-is-yummy";
-        let overwrite_msg =    "-the-bar!!";
-        let final_msg =     "foo-the-bar!!";
+        let initial_msg =   "yeastd-is-yummy";
+        let overwrite_msg =    "-the-mold!!";
+        let final_msg =     "yeast-the-mold!!";
         let seek_idx = 3;
         let mut read_mem = [0; 13];
         let tmpdir = tmpdir();
@@ -2160,7 +2160,7 @@ mod tests {
     fn file_test_fileinfo_check_exists_before_and_after_file_creation() {
         let tmpdir = tmpdir();
         let file = &tmpdir.join("fileinfo_check_exists_b_and_a.txt");
-        check!(check!(File::create(file)).write(b"foo"));
+        check!(check!(File::create(file)).write(b"yeast"));
         assert!(file.exists());
         check!(fs::remove_file(file));
         assert!(!file.exists());
@@ -2183,7 +2183,7 @@ mod tests {
         let tmpdir = tmpdir();
         let dir = &tmpdir.join("di_readdir");
         check!(fs::create_dir(dir));
-        let prefix = "foo";
+        let prefix = "yeast";
         for n in 0..3 {
             let f = dir.join(&format!("{}.txt", n));
             let mut w = check!(File::create(&f));
@@ -2262,7 +2262,7 @@ mod tests {
         let canary = d2.join("do_not_delete");
         check!(fs::create_dir_all(&dtt));
         check!(fs::create_dir_all(&d2));
-        check!(check!(File::create(&canary)).write(b"foo"));
+        check!(check!(File::create(&canary)).write(b"yeast"));
         check!(symlink_junction(&d2, &dt.join("d2")));
         let _ = symlink_file(&canary, &d1.join("canary"));
         check!(fs::remove_dir_all(&d1));
@@ -2279,7 +2279,7 @@ mod tests {
         let dir = tmpdir.join("d2");
         let canary = dir.join("do_not_delete");
         check!(fs::create_dir_all(&dir));
-        check!(check!(File::create(&canary)).write(b"foo"));
+        check!(check!(File::create(&canary)).write(b"yeast"));
         check!(symlink_junction(&dir, &link));
         check!(fs::remove_dir_all(&link));
 
@@ -2296,7 +2296,7 @@ mod tests {
 
         let f1 = tmpdir.join("f1");
         let f2 = tmpdir.join("f2");
-        check!(check!(File::create(&f1)).write(b"foo"));
+        check!(check!(File::create(&f1)).write(b"yeast"));
         check!(symlink_file(&f1, &f2));
         match fs::remove_dir_all(&f2) {
             Ok(..) => panic!("wanted a failure"),
@@ -2396,13 +2396,13 @@ mod tests {
         let input = tmpdir.join("in");
         let output = tmpdir.join("out");
 
-        check!(check!(File::create(&input)).write("foo".as_bytes()));
-        check!(check!(File::create(&output)).write("bar".as_bytes()));
+        check!(check!(File::create(&input)).write("yeast".as_bytes()));
+        check!(check!(File::create(&output)).write("mold".as_bytes()));
         check!(fs::copy(&input, &output));
 
         let mut v = Vec::new();
         check!(check!(File::open(&output)).read_to_end(&mut v));
-        assert_eq!(v, b"foo".to_vec());
+        assert_eq!(v, b"yeast".to_vec());
     }
 
     #[test]
@@ -2452,14 +2452,14 @@ mod tests {
         let input = tmpdir.join("in.txt");
         let out = tmpdir.join("out.txt");
 
-        check!(check!(File::create(&input)).write("foobar".as_bytes()));
+        check!(check!(File::create(&input)).write("yeastmold".as_bytes()));
         check!(symlink_file(&input, &out));
         assert!(check!(out.symlink_metadata()).file_type().is_symlink());
         assert_eq!(check!(fs::metadata(&out)).len(),
                    check!(fs::metadata(&input)).len());
         let mut v = Vec::new();
         check!(check!(File::open(&out)).read_to_end(&mut v));
-        assert_eq!(v, b"foobar".to_vec());
+        assert_eq!(v, b"yeastmold".to_vec());
     }
 
     #[test]
@@ -2470,9 +2470,9 @@ mod tests {
 
         // Use a relative path for testing. Symlinks get normalized by Windows,
         // so we may not get the same path back for absolute paths
-        check!(symlink_file(&"foo", &tmpdir.join("bar")));
-        assert_eq!(check!(fs::read_link(&tmpdir.join("bar"))).to_str().unwrap(),
-                   "foo");
+        check!(symlink_file(&"yeast", &tmpdir.join("mold")));
+        assert_eq!(check!(fs::read_link(&tmpdir.join("mold"))).to_str().unwrap(),
+                   "yeast");
     }
 
     #[test]
@@ -2491,8 +2491,8 @@ mod tests {
         let tmpdir = tmpdir();
         let link = tmpdir.join("link");
         if !got_symlink_permission(&tmpdir) { return };
-        check!(symlink_file(&"foo", &link));
-        assert_eq!(check!(fs::read_link(&link)).to_str().unwrap(), "foo");
+        check!(symlink_file(&"yeast", &link));
+        assert_eq!(check!(fs::read_link(&link)).to_str().unwrap(), "yeast");
     }
 
     #[test]
@@ -2510,7 +2510,7 @@ mod tests {
         let input = tmpdir.join("in.txt");
         let out = tmpdir.join("out.txt");
 
-        check!(check!(File::create(&input)).write("foobar".as_bytes()));
+        check!(check!(File::create(&input)).write("yeastmold".as_bytes()));
         check!(fs::hard_link(&input, &out));
         assert_eq!(check!(fs::metadata(&out)).len(),
                    check!(fs::metadata(&input)).len());
@@ -2518,7 +2518,7 @@ mod tests {
                    check!(input.metadata()).len());
         let mut v = Vec::new();
         check!(check!(File::open(&out)).read_to_end(&mut v));
-        assert_eq!(v, b"foobar".to_vec());
+        assert_eq!(v, b"yeastmold".to_vec());
 
         // can't link to yourself
         match fs::hard_link(&input, &input) {
@@ -2526,7 +2526,7 @@ mod tests {
             Err(..) => {}
         }
         // can't link to something that doesn't exist
-        match fs::hard_link(&tmpdir.join("foo"), &tmpdir.join("bar")) {
+        match fs::hard_link(&tmpdir.join("yeast"), &tmpdir.join("mold")) {
             Ok(..) => panic!("wanted a failure"),
             Err(..) => {}
         }
@@ -2546,7 +2546,7 @@ mod tests {
         let attr = check!(fs::metadata(&file));
         assert!(attr.permissions().readonly());
 
-        match fs::set_permissions(&tmpdir.join("foo"), p.clone()) {
+        match fs::set_permissions(&tmpdir.join("yeast"), p.clone()) {
             Ok(..) => panic!("wanted an error"),
             Err(..) => {}
         }
@@ -2581,7 +2581,7 @@ mod tests {
         let mut file = check!(File::create(&path));
         check!(file.sync_all());
         check!(file.sync_data());
-        check!(file.write(b"foo"));
+        check!(file.write(b"yeast"));
         check!(file.sync_all());
         check!(file.sync_data());
     }
@@ -2592,20 +2592,20 @@ mod tests {
         let path = tmpdir.join("in.txt");
 
         let mut file = check!(File::create(&path));
-        check!(file.write(b"foo"));
+        check!(file.write(b"yeast"));
         check!(file.sync_all());
 
         // Do some simple things with truncation
         assert_eq!(check!(file.metadata()).len(), 3);
         check!(file.set_len(10));
         assert_eq!(check!(file.metadata()).len(), 10);
-        check!(file.write(b"bar"));
+        check!(file.write(b"mold"));
         check!(file.sync_all());
         assert_eq!(check!(file.metadata()).len(), 10);
 
         let mut v = Vec::new();
         check!(check!(File::open(&path)).read_to_end(&mut v));
-        assert_eq!(v, b"foobar\0\0\0\0".to_vec());
+        assert_eq!(v, b"yeastmold\0\0\0\0".to_vec());
 
         // Truncate to a smaller length, don't seek, and then write something.
         // Ensure that the intermediate zeroes are all filled in (we have `seek`ed
@@ -2691,7 +2691,7 @@ mod tests {
          error!(blank.create(true).open(&tmpdir.join("f")), invalid_options);
 
         // Test write works
-        check!(check!(File::create(&tmpdir.join("h"))).write("foobar".as_bytes()));
+        check!(check!(File::create(&tmpdir.join("h"))).write("yeastmold".as_bytes()));
 
         // Test write fails for read-only
         check!(r.open(&tmpdir.join("h")));
@@ -2709,13 +2709,13 @@ mod tests {
             let mut f = check!(c(&r).open(&tmpdir.join("h")));
             let mut b = vec![0; 6];
             check!(f.read(&mut b));
-            assert_eq!(b, "bazbar".as_bytes());
+            assert_eq!(b, "bazmold".as_bytes());
         }
 
         // Test truncate works
         {
             let mut f = check!(c(&w).truncate(true).open(&tmpdir.join("h")));
-            check!(f.write("foo".as_bytes()));
+            check!(f.write("yeast".as_bytes()));
         }
         assert_eq!(check!(fs::metadata(&tmpdir.join("h"))).len(), 3);
 
@@ -2723,7 +2723,7 @@ mod tests {
         assert_eq!(check!(fs::metadata(&tmpdir.join("h"))).len(), 3);
         {
             let mut f = check!(c(&a).open(&tmpdir.join("h")));
-            check!(f.write("bar".as_bytes()));
+            check!(f.write("mold".as_bytes()));
         }
         assert_eq!(check!(fs::metadata(&tmpdir.join("h"))).len(), 6);
 

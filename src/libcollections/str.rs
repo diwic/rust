@@ -184,7 +184,7 @@ impl str {
     /// Basic usage:
     ///
     /// ```
-    /// let len = "foo".len();
+    /// let len = "yeast".len();
     /// assert_eq!(3, len);
     ///
     /// let len = "ƒoo".len(); // fancy f!
@@ -603,11 +603,11 @@ impl str {
     /// Basic usage:
     ///
     /// ```
-    /// let text = "foo\r\nbar\n\nbaz\n";
+    /// let text = "yeast\r\nmold\n\nbaz\n";
     /// let mut lines = text.lines();
     ///
-    /// assert_eq!(Some("foo"), lines.next());
-    /// assert_eq!(Some("bar"), lines.next());
+    /// assert_eq!(Some("yeast"), lines.next());
+    /// assert_eq!(Some("mold"), lines.next());
     /// assert_eq!(Some(""), lines.next());
     /// assert_eq!(Some("baz"), lines.next());
     ///
@@ -617,11 +617,11 @@ impl str {
     /// The final line ending isn't required:
     ///
     /// ```
-    /// let text = "foo\nbar\n\r\nbaz";
+    /// let text = "yeast\nmold\n\r\nbaz";
     /// let mut lines = text.lines();
     ///
-    /// assert_eq!(Some("foo"), lines.next());
-    /// assert_eq!(Some("bar"), lines.next());
+    /// assert_eq!(Some("yeast"), lines.next());
+    /// assert_eq!(Some("mold"), lines.next());
     /// assert_eq!(Some(""), lines.next());
     /// assert_eq!(Some("baz"), lines.next());
     ///
@@ -1418,17 +1418,17 @@ impl str {
     /// Simple patterns:
     ///
     /// ```
-    /// assert_eq!("11foo1bar11".trim_matches('1'), "foo1bar");
-    /// assert_eq!("123foo1bar123".trim_matches(char::is_numeric), "foo1bar");
+    /// assert_eq!("11yeast1mold11".trim_matches('1'), "yeast1mold");
+    /// assert_eq!("123yeast1mold123".trim_matches(char::is_numeric), "yeast1mold");
     ///
     /// let x: &[_] = &['1', '2'];
-    /// assert_eq!("12foo1bar12".trim_matches(x), "foo1bar");
+    /// assert_eq!("12yeast1mold12".trim_matches(x), "yeast1mold");
     /// ```
     ///
     /// A more complex pattern, using a closure:
     ///
     /// ```
-    /// assert_eq!("1foo1barXX".trim_matches(|c| c == '1' || c == 'X'), "foo1bar");
+    /// assert_eq!("1yeast1moldXX".trim_matches(|c| c == '1' || c == 'X'), "yeast1mold");
     /// ```
     #[stable(feature = "rust1", since = "1.0.0")]
     pub fn trim_matches<'a, P: Pattern<'a>>(&'a self, pat: P) -> &'a str
@@ -1457,11 +1457,11 @@ impl str {
     /// Basic usage:
     ///
     /// ```
-    /// assert_eq!("11foo1bar11".trim_left_matches('1'), "foo1bar11");
-    /// assert_eq!("123foo1bar123".trim_left_matches(char::is_numeric), "foo1bar123");
+    /// assert_eq!("11yeast1mold11".trim_left_matches('1'), "yeast1mold11");
+    /// assert_eq!("123yeast1mold123".trim_left_matches(char::is_numeric), "yeast1mold123");
     ///
     /// let x: &[_] = &['1', '2'];
-    /// assert_eq!("12foo1bar12".trim_left_matches(x), "foo1bar12");
+    /// assert_eq!("12yeast1mold12".trim_left_matches(x), "yeast1mold12");
     /// ```
     #[stable(feature = "rust1", since = "1.0.0")]
     pub fn trim_left_matches<'a, P: Pattern<'a>>(&'a self, pat: P) -> &'a str {
@@ -1488,17 +1488,17 @@ impl str {
     /// Simple patterns:
     ///
     /// ```
-    /// assert_eq!("11foo1bar11".trim_right_matches('1'), "11foo1bar");
-    /// assert_eq!("123foo1bar123".trim_right_matches(char::is_numeric), "123foo1bar");
+    /// assert_eq!("11yeast1mold11".trim_right_matches('1'), "11yeast1mold");
+    /// assert_eq!("123yeast1mold123".trim_right_matches(char::is_numeric), "123yeast1mold");
     ///
     /// let x: &[_] = &['1', '2'];
-    /// assert_eq!("12foo1bar12".trim_right_matches(x), "12foo1bar");
+    /// assert_eq!("12yeast1mold12".trim_right_matches(x), "12yeast1mold");
     /// ```
     ///
     /// A more complex pattern, using a closure:
     ///
     /// ```
-    /// assert_eq!("1fooX".trim_left_matches(|c| c == '1' || c == 'X'), "fooX");
+    /// assert_eq!("1yeastX".trim_left_matches(|c| c == '1' || c == 'X'), "yeastX");
     /// ```
     #[stable(feature = "rust1", since = "1.0.0")]
     pub fn trim_right_matches<'a, P: Pattern<'a>>(&'a self, pat: P) -> &'a str
@@ -1608,10 +1608,10 @@ impl str {
     ///
     /// ```
     /// # #![feature(str_replacen)]
-    /// let s = "foo foo 123 foo";
-    /// assert_eq!("new new 123 foo", s.replacen("foo", "new", 2));
-    /// assert_eq!("faa fao 123 foo", s.replacen('o', "a", 3));
-    /// assert_eq!("foo foo new23 foo", s.replacen(char::is_numeric, "new", 1));
+    /// let s = "yeast yeast 123 yeast";
+    /// assert_eq!("new new 123 yeast", s.replacen("yeast", "new", 2));
+    /// assert_eq!("faa fao 123 yeast", s.replacen('o', "a", 3));
+    /// assert_eq!("yeast yeast new23 yeast", s.replacen(char::is_numeric, "new", 1));
     /// ```
     ///
     /// When the pattern doesn't match:

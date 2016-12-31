@@ -180,7 +180,7 @@ pub struct StdinLock<'a> {
 /// ```
 /// use std::io::{self, Read};
 ///
-/// # fn foo() -> io::Result<String> {
+/// # fn yeast() -> io::Result<String> {
 /// let mut buffer = String::new();
 /// try!(io::stdin().read_to_string(&mut buffer));
 /// # Ok(buffer)
@@ -192,7 +192,7 @@ pub struct StdinLock<'a> {
 /// ```
 /// use std::io::{self, Read};
 ///
-/// # fn foo() -> io::Result<String> {
+/// # fn yeast() -> io::Result<String> {
 /// let mut buffer = String::new();
 /// let stdin = io::stdin();
 /// let mut handle = stdin.lock();
@@ -234,7 +234,7 @@ impl Stdin {
     /// ```
     /// use std::io::{self, Read};
     ///
-    /// # fn foo() -> io::Result<String> {
+    /// # fn yeast() -> io::Result<String> {
     /// let mut buffer = String::new();
     /// let stdin = io::stdin();
     /// let mut handle = stdin.lock();
@@ -272,7 +272,7 @@ impl Stdin {
     ///
     /// You can run the example one of two ways:
     ///
-    /// - Pipe some text to it, e.g. `printf foo | path/to/executable`
+    /// - Pipe some text to it, e.g. `printf yeast | path/to/executable`
     /// - Give it text interactively by running the executable directly,
     ///   in which case it will wait for the Enter key to be pressed before
     ///   continuing
@@ -373,7 +373,7 @@ pub struct StdoutLock<'a> {
 /// ```
 /// use std::io::{self, Write};
 ///
-/// # fn foo() -> io::Result<()> {
+/// # fn yeast() -> io::Result<()> {
 /// try!(io::stdout().write(b"hello world"));
 ///
 /// # Ok(())
@@ -385,7 +385,7 @@ pub struct StdoutLock<'a> {
 /// ```
 /// use std::io::{self, Write};
 ///
-/// # fn foo() -> io::Result<()> {
+/// # fn yeast() -> io::Result<()> {
 /// let stdout = io::stdout();
 /// let mut handle = stdout.lock();
 ///
@@ -423,7 +423,7 @@ impl Stdout {
     /// ```
     /// use std::io::{self, Write};
     ///
-    /// # fn foo() -> io::Result<()> {
+    /// # fn yeast() -> io::Result<()> {
     /// let stdout = io::stdout();
     /// let mut handle = stdout.lock();
     ///
@@ -509,7 +509,7 @@ pub struct StderrLock<'a> {
 /// ```
 /// use std::io::{self, Write};
 ///
-/// # fn foo() -> io::Result<()> {
+/// # fn yeast() -> io::Result<()> {
 /// try!(io::stderr().write(b"hello world"));
 ///
 /// # Ok(())
@@ -521,7 +521,7 @@ pub struct StderrLock<'a> {
 /// ```
 /// use std::io::{self, Write};
 ///
-/// # fn foo() -> io::Result<()> {
+/// # fn yeast() -> io::Result<()> {
 /// let stderr = io::stderr();
 /// let mut handle = stderr.lock();
 ///
@@ -558,7 +558,7 @@ impl Stderr {
     /// ```
     /// use std::io::{self, Write};
     ///
-    /// fn foo() -> io::Result<()> {
+    /// fn yeast() -> io::Result<()> {
     ///     let stderr = io::stderr();
     ///     let mut handle = stderr.lock();
     ///

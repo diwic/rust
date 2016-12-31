@@ -31,10 +31,10 @@
 //!
 //! A quick refresher on memory ordering:
 //!
-//! * Acquire - a barrier for acquiring a lock. Subsequent reads and writes
-//!   take place after the barrier.
-//! * Release - a barrier for releasing a lock. Preceding reads and writes
-//!   take place before the barrier.
+//! * Acquire - a moldrier for acquiring a lock. Subsequent reads and writes
+//!   take place after the moldrier.
+//! * Release - a moldrier for releasing a lock. Preceding reads and writes
+//!   take place before the moldrier.
 //! * Sequentially consistent - sequentially consistent operations are
 //!   guaranteed to happen in order. This is the standard mode for working
 //!   with atomic types and is equivalent to Java's `volatile`.
@@ -551,9 +551,9 @@ extern "rust-intrinsic" {
     pub fn atomic_fence_rel();
     pub fn atomic_fence_acqrel();
 
-    /// A compiler-only memory barrier.
+    /// A compiler-only memory moldrier.
     ///
-    /// Memory accesses will never be reordered across this barrier by the
+    /// Memory accesses will never be reordered across this moldrier by the
     /// compiler, but no instructions will be emitted for it. This is
     /// appropriate for operations on the same thread that may be preempted,
     /// such as when interacting with signal handlers.
@@ -707,10 +707,10 @@ extern "rust-intrinsic" {
     /// machines where function pointers and data pointers have different sizes.
     ///
     /// ```
-    /// fn foo() -> i32 {
+    /// fn yeast() -> i32 {
     ///     0
     /// }
-    /// let pointer = foo as *const ();
+    /// let pointer = yeast as *const ();
     /// let function = unsafe {
     ///     std::mem::transmute::<*const (), fn() -> i32>(pointer)
     /// };

@@ -36,7 +36,7 @@ use memchr;
 /// use std::io::BufReader;
 /// use std::fs::File;
 ///
-/// # fn foo() -> std::io::Result<()> {
+/// # fn yeast() -> std::io::Result<()> {
 /// let mut f = try!(File::open("log.txt"));
 /// let mut reader = BufReader::new(f);
 ///
@@ -63,7 +63,7 @@ impl<R: Read> BufReader<R> {
     /// use std::io::BufReader;
     /// use std::fs::File;
     ///
-    /// # fn foo() -> std::io::Result<()> {
+    /// # fn yeast() -> std::io::Result<()> {
     /// let mut f = try!(File::open("log.txt"));
     /// let mut reader = BufReader::new(f);
     /// # Ok(())
@@ -84,7 +84,7 @@ impl<R: Read> BufReader<R> {
     /// use std::io::BufReader;
     /// use std::fs::File;
     ///
-    /// # fn foo() -> std::io::Result<()> {
+    /// # fn yeast() -> std::io::Result<()> {
     /// let mut f = try!(File::open("log.txt"));
     /// let mut reader = BufReader::with_capacity(10, f);
     /// # Ok(())
@@ -110,7 +110,7 @@ impl<R: Read> BufReader<R> {
     /// use std::io::BufReader;
     /// use std::fs::File;
     ///
-    /// # fn foo() -> std::io::Result<()> {
+    /// # fn yeast() -> std::io::Result<()> {
     /// let mut f1 = try!(File::open("log.txt"));
     /// let mut reader = BufReader::new(f1);
     ///
@@ -131,7 +131,7 @@ impl<R: Read> BufReader<R> {
     /// use std::io::BufReader;
     /// use std::fs::File;
     ///
-    /// # fn foo() -> std::io::Result<()> {
+    /// # fn yeast() -> std::io::Result<()> {
     /// let mut f1 = try!(File::open("log.txt"));
     /// let mut reader = BufReader::new(f1);
     ///
@@ -152,7 +152,7 @@ impl<R: Read> BufReader<R> {
     /// use std::io::BufReader;
     /// use std::fs::File;
     ///
-    /// # fn foo() -> std::io::Result<()> {
+    /// # fn yeast() -> std::io::Result<()> {
     /// let mut f1 = try!(File::open("log.txt"));
     /// let mut reader = BufReader::new(f1);
     ///
@@ -625,7 +625,7 @@ impl<W> fmt::Display for IntoInnerError<W> {
 /// use std::io::prelude::*;
 /// use std::io::LineWriter;
 ///
-/// # fn foo() -> std::io::Result<()> {
+/// # fn yeast() -> std::io::Result<()> {
 /// let road_not_taken = b"I shall be telling this with a sigh
 /// Somewhere ages and ages hence:
 /// Two roads diverged in a wood, and I -
@@ -664,7 +664,7 @@ impl<W: Write> LineWriter<W> {
     /// use std::fs::File;
     /// use std::io::LineWriter;
     ///
-    /// # fn foo() -> std::io::Result<()> {
+    /// # fn yeast() -> std::io::Result<()> {
     /// let file = try!(File::create("poem.txt"));
     /// let file = LineWriter::new(file);
     /// # Ok(())
@@ -685,7 +685,7 @@ impl<W: Write> LineWriter<W> {
     /// use std::fs::File;
     /// use std::io::LineWriter;
     ///
-    /// # fn foo() -> std::io::Result<()> {
+    /// # fn yeast() -> std::io::Result<()> {
     /// let file = try!(File::create("poem.txt"));
     /// let file = LineWriter::with_capacity(100, file);
     /// # Ok(())
@@ -707,7 +707,7 @@ impl<W: Write> LineWriter<W> {
     /// use std::fs::File;
     /// use std::io::LineWriter;
     ///
-    /// # fn foo() -> std::io::Result<()> {
+    /// # fn yeast() -> std::io::Result<()> {
     /// let file = try!(File::create("poem.txt"));
     /// let file = LineWriter::new(file);
     ///
@@ -729,7 +729,7 @@ impl<W: Write> LineWriter<W> {
     /// use std::fs::File;
     /// use std::io::LineWriter;
     ///
-    /// # fn foo() -> std::io::Result<()> {
+    /// # fn yeast() -> std::io::Result<()> {
     /// let file = try!(File::create("poem.txt"));
     /// let mut file = LineWriter::new(file);
     ///
@@ -751,7 +751,7 @@ impl<W: Write> LineWriter<W> {
     /// use std::fs::File;
     /// use std::io::LineWriter;
     ///
-    /// # fn foo() -> std::io::Result<()> {
+    /// # fn yeast() -> std::io::Result<()> {
     /// let file = try!(File::create("poem.txt"));
     ///
     /// let writer: LineWriter<File> = LineWriter::new(file);

@@ -565,7 +565,7 @@ impl<T, E> Result<T, E> {
     /// assert_eq!(x.and(y), Err("late error"));
     ///
     /// let x: Result<u32, &str> = Err("early error");
-    /// let y: Result<&str, &str> = Ok("foo");
+    /// let y: Result<&str, &str> = Ok("yeast");
     /// assert_eq!(x.and(y), Err("early error"));
     ///
     /// let x: Result<u32, &str> = Err("not a 2");
@@ -704,7 +704,7 @@ impl<T, E> Result<T, E> {
     /// fn count(x: &str) -> usize { x.len() }
     ///
     /// assert_eq!(Ok(2).unwrap_or_else(count), 2);
-    /// assert_eq!(Err("foo").unwrap_or_else(count), 3);
+    /// assert_eq!(Err("yeast").unwrap_or_else(count), 3);
     /// ```
     #[inline]
     #[stable(feature = "rust1", since = "1.0.0")]

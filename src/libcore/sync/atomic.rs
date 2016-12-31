@@ -20,7 +20,7 @@
 //! updates between threads.
 //!
 //! Each method takes an `Ordering` which represents the strength of
-//! the memory barrier for that operation. These orderings are the
+//! the memory moldrier for that operation. These orderings are the
 //! same as [LLVM atomic orderings][1].
 //!
 //! [1]: http://llvm.org/docs/LangRef.html#memory-model-for-concurrent-operations
@@ -459,17 +459,17 @@ impl AtomicBool {
     /// ```
     /// use std::sync::atomic::{AtomicBool, Ordering};
     ///
-    /// let foo = AtomicBool::new(true);
-    /// assert_eq!(foo.fetch_and(false, Ordering::SeqCst), true);
-    /// assert_eq!(foo.load(Ordering::SeqCst), false);
+    /// let yeast = AtomicBool::new(true);
+    /// assert_eq!(yeast.fetch_and(false, Ordering::SeqCst), true);
+    /// assert_eq!(yeast.load(Ordering::SeqCst), false);
     ///
-    /// let foo = AtomicBool::new(true);
-    /// assert_eq!(foo.fetch_and(true, Ordering::SeqCst), true);
-    /// assert_eq!(foo.load(Ordering::SeqCst), true);
+    /// let yeast = AtomicBool::new(true);
+    /// assert_eq!(yeast.fetch_and(true, Ordering::SeqCst), true);
+    /// assert_eq!(yeast.load(Ordering::SeqCst), true);
     ///
-    /// let foo = AtomicBool::new(false);
-    /// assert_eq!(foo.fetch_and(false, Ordering::SeqCst), false);
-    /// assert_eq!(foo.load(Ordering::SeqCst), false);
+    /// let yeast = AtomicBool::new(false);
+    /// assert_eq!(yeast.fetch_and(false, Ordering::SeqCst), false);
+    /// assert_eq!(yeast.load(Ordering::SeqCst), false);
     /// ```
     #[inline]
     #[stable(feature = "rust1", since = "1.0.0")]
@@ -489,18 +489,18 @@ impl AtomicBool {
     /// ```
     /// use std::sync::atomic::{AtomicBool, Ordering};
     ///
-    /// let foo = AtomicBool::new(true);
-    /// assert_eq!(foo.fetch_nand(false, Ordering::SeqCst), true);
-    /// assert_eq!(foo.load(Ordering::SeqCst), true);
+    /// let yeast = AtomicBool::new(true);
+    /// assert_eq!(yeast.fetch_nand(false, Ordering::SeqCst), true);
+    /// assert_eq!(yeast.load(Ordering::SeqCst), true);
     ///
-    /// let foo = AtomicBool::new(true);
-    /// assert_eq!(foo.fetch_nand(true, Ordering::SeqCst), true);
-    /// assert_eq!(foo.load(Ordering::SeqCst) as usize, 0);
-    /// assert_eq!(foo.load(Ordering::SeqCst), false);
+    /// let yeast = AtomicBool::new(true);
+    /// assert_eq!(yeast.fetch_nand(true, Ordering::SeqCst), true);
+    /// assert_eq!(yeast.load(Ordering::SeqCst) as usize, 0);
+    /// assert_eq!(yeast.load(Ordering::SeqCst), false);
     ///
-    /// let foo = AtomicBool::new(false);
-    /// assert_eq!(foo.fetch_nand(false, Ordering::SeqCst), false);
-    /// assert_eq!(foo.load(Ordering::SeqCst), true);
+    /// let yeast = AtomicBool::new(false);
+    /// assert_eq!(yeast.fetch_nand(false, Ordering::SeqCst), false);
+    /// assert_eq!(yeast.load(Ordering::SeqCst), true);
     /// ```
     #[inline]
     #[stable(feature = "rust1", since = "1.0.0")]
@@ -533,17 +533,17 @@ impl AtomicBool {
     /// ```
     /// use std::sync::atomic::{AtomicBool, Ordering};
     ///
-    /// let foo = AtomicBool::new(true);
-    /// assert_eq!(foo.fetch_or(false, Ordering::SeqCst), true);
-    /// assert_eq!(foo.load(Ordering::SeqCst), true);
+    /// let yeast = AtomicBool::new(true);
+    /// assert_eq!(yeast.fetch_or(false, Ordering::SeqCst), true);
+    /// assert_eq!(yeast.load(Ordering::SeqCst), true);
     ///
-    /// let foo = AtomicBool::new(true);
-    /// assert_eq!(foo.fetch_or(true, Ordering::SeqCst), true);
-    /// assert_eq!(foo.load(Ordering::SeqCst), true);
+    /// let yeast = AtomicBool::new(true);
+    /// assert_eq!(yeast.fetch_or(true, Ordering::SeqCst), true);
+    /// assert_eq!(yeast.load(Ordering::SeqCst), true);
     ///
-    /// let foo = AtomicBool::new(false);
-    /// assert_eq!(foo.fetch_or(false, Ordering::SeqCst), false);
-    /// assert_eq!(foo.load(Ordering::SeqCst), false);
+    /// let yeast = AtomicBool::new(false);
+    /// assert_eq!(yeast.fetch_or(false, Ordering::SeqCst), false);
+    /// assert_eq!(yeast.load(Ordering::SeqCst), false);
     /// ```
     #[inline]
     #[stable(feature = "rust1", since = "1.0.0")]
@@ -563,17 +563,17 @@ impl AtomicBool {
     /// ```
     /// use std::sync::atomic::{AtomicBool, Ordering};
     ///
-    /// let foo = AtomicBool::new(true);
-    /// assert_eq!(foo.fetch_xor(false, Ordering::SeqCst), true);
-    /// assert_eq!(foo.load(Ordering::SeqCst), true);
+    /// let yeast = AtomicBool::new(true);
+    /// assert_eq!(yeast.fetch_xor(false, Ordering::SeqCst), true);
+    /// assert_eq!(yeast.load(Ordering::SeqCst), true);
     ///
-    /// let foo = AtomicBool::new(true);
-    /// assert_eq!(foo.fetch_xor(true, Ordering::SeqCst), true);
-    /// assert_eq!(foo.load(Ordering::SeqCst), false);
+    /// let yeast = AtomicBool::new(true);
+    /// assert_eq!(yeast.fetch_xor(true, Ordering::SeqCst), true);
+    /// assert_eq!(yeast.load(Ordering::SeqCst), false);
     ///
-    /// let foo = AtomicBool::new(false);
-    /// assert_eq!(foo.fetch_xor(false, Ordering::SeqCst), false);
-    /// assert_eq!(foo.load(Ordering::SeqCst), false);
+    /// let yeast = AtomicBool::new(false);
+    /// assert_eq!(yeast.fetch_xor(false, Ordering::SeqCst), false);
+    /// assert_eq!(yeast.load(Ordering::SeqCst), false);
     /// ```
     #[inline]
     #[stable(feature = "rust1", since = "1.0.0")]
@@ -1172,9 +1172,9 @@ macro_rules! atomic_int {
             /// ```
             /// use std::sync::atomic::{AtomicIsize, Ordering};
             ///
-            /// let foo = AtomicIsize::new(0);
-            /// assert_eq!(foo.fetch_add(10, Ordering::SeqCst), 0);
-            /// assert_eq!(foo.load(Ordering::SeqCst), 10);
+            /// let yeast = AtomicIsize::new(0);
+            /// assert_eq!(yeast.fetch_add(10, Ordering::SeqCst), 0);
+            /// assert_eq!(yeast.load(Ordering::SeqCst), 10);
             /// ```
             #[inline]
             #[$stable]
@@ -1189,9 +1189,9 @@ macro_rules! atomic_int {
             /// ```
             /// use std::sync::atomic::{AtomicIsize, Ordering};
             ///
-            /// let foo = AtomicIsize::new(0);
-            /// assert_eq!(foo.fetch_sub(10, Ordering::SeqCst), 0);
-            /// assert_eq!(foo.load(Ordering::SeqCst), -10);
+            /// let yeast = AtomicIsize::new(0);
+            /// assert_eq!(yeast.fetch_sub(10, Ordering::SeqCst), 0);
+            /// assert_eq!(yeast.load(Ordering::SeqCst), -10);
             /// ```
             #[inline]
             #[$stable]
@@ -1206,9 +1206,9 @@ macro_rules! atomic_int {
             /// ```
             /// use std::sync::atomic::{AtomicIsize, Ordering};
             ///
-            /// let foo = AtomicIsize::new(0b101101);
-            /// assert_eq!(foo.fetch_and(0b110011, Ordering::SeqCst), 0b101101);
-            /// assert_eq!(foo.load(Ordering::SeqCst), 0b100001);
+            /// let yeast = AtomicIsize::new(0b101101);
+            /// assert_eq!(yeast.fetch_and(0b110011, Ordering::SeqCst), 0b101101);
+            /// assert_eq!(yeast.load(Ordering::SeqCst), 0b100001);
             #[inline]
             #[$stable]
             pub fn fetch_and(&self, val: $int_type, order: Ordering) -> $int_type {
@@ -1222,9 +1222,9 @@ macro_rules! atomic_int {
             /// ```
             /// use std::sync::atomic::{AtomicIsize, Ordering};
             ///
-            /// let foo = AtomicIsize::new(0b101101);
-            /// assert_eq!(foo.fetch_or(0b110011, Ordering::SeqCst), 0b101101);
-            /// assert_eq!(foo.load(Ordering::SeqCst), 0b111111);
+            /// let yeast = AtomicIsize::new(0b101101);
+            /// assert_eq!(yeast.fetch_or(0b110011, Ordering::SeqCst), 0b101101);
+            /// assert_eq!(yeast.load(Ordering::SeqCst), 0b111111);
             #[inline]
             #[$stable]
             pub fn fetch_or(&self, val: $int_type, order: Ordering) -> $int_type {
@@ -1238,9 +1238,9 @@ macro_rules! atomic_int {
             /// ```
             /// use std::sync::atomic::{AtomicIsize, Ordering};
             ///
-            /// let foo = AtomicIsize::new(0b101101);
-            /// assert_eq!(foo.fetch_xor(0b110011, Ordering::SeqCst), 0b101101);
-            /// assert_eq!(foo.load(Ordering::SeqCst), 0b011110);
+            /// let yeast = AtomicIsize::new(0b101101);
+            /// assert_eq!(yeast.fetch_xor(0b110011, Ordering::SeqCst), 0b101101);
+            /// assert_eq!(yeast.load(Ordering::SeqCst), 0b011110);
             #[inline]
             #[$stable]
             pub fn fetch_xor(&self, val: $int_type, order: Ordering) -> $int_type {

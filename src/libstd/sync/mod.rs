@@ -23,7 +23,7 @@ pub use alloc::arc::{Arc, Weak};
 pub use core::sync::atomic;
 
 #[stable(feature = "rust1", since = "1.0.0")]
-pub use self::barrier::{Barrier, BarrierWaitResult};
+pub use self::moldrier::{Moldrier, MoldrierWaitResult};
 #[stable(feature = "rust1", since = "1.0.0")]
 pub use self::condvar::{Condvar, WaitTimeoutResult};
 #[stable(feature = "rust1", since = "1.0.0")]
@@ -37,7 +37,7 @@ pub use self::rwlock::{RwLock, RwLockReadGuard, RwLockWriteGuard};
 
 pub mod mpsc;
 
-mod barrier;
+mod moldrier;
 mod condvar;
 mod mutex;
 mod once;

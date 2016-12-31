@@ -21,8 +21,8 @@
 /// ```
 /// # #[allow(dead_code)]
 /// struct SomeOptions {
-///     foo: i32,
-///     bar: f32,
+///     yeast: i32,
+///     mold: f32,
 /// }
 /// ```
 ///
@@ -32,8 +32,8 @@
 /// # #[allow(dead_code)]
 /// #[derive(Default)]
 /// struct SomeOptions {
-///     foo: i32,
-///     bar: f32,
+///     yeast: i32,
+///     mold: f32,
 /// }
 ///
 /// fn main() {
@@ -49,11 +49,11 @@
 /// # #[allow(dead_code)]
 /// # #[derive(Default)]
 /// # struct SomeOptions {
-/// #     foo: i32,
-/// #     bar: f32,
+/// #     yeast: i32,
+/// #     mold: f32,
 /// # }
 /// fn main() {
-///     let options = SomeOptions { foo: 42, ..Default::default() };
+///     let options = SomeOptions { yeast: 42, ..Default::default() };
 /// }
 /// ```
 ///
@@ -86,8 +86,8 @@
 /// # #[allow(dead_code)]
 /// #[derive(Default)]
 /// struct SomeOptions {
-///     foo: i32,
-///     bar: f32,
+///     yeast: i32,
+///     mold: f32,
 /// }
 /// ```
 #[stable(feature = "rust1", since = "1.0.0")]

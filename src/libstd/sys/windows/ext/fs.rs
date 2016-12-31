@@ -86,7 +86,7 @@ pub trait OpenOptionsExt {
     ///
     /// // Open without read and write permission, for example if you only need
     /// // to call `stat()` on the file
-    /// let file = OpenOptions::new().access_mode(0).open("foo.txt");
+    /// let file = OpenOptions::new().access_mode(0).open("yeast.txt");
     /// ```
     #[stable(feature = "open_options_ext", since = "1.10.0")]
     fn access_mode(&mut self, access: u32) -> &mut Self;
@@ -109,7 +109,7 @@ pub trait OpenOptionsExt {
     /// // for writing
     /// let file = OpenOptions::new().write(true)
     ///                              .share_mode(0)
-    ///                              .open("foo.txt");
+    ///                              .open("yeast.txt");
     /// ```
     #[stable(feature = "open_options_ext", since = "1.10.0")]
     fn share_mode(&mut self, val: u32) -> &mut Self;
@@ -133,7 +133,7 @@ pub trait OpenOptionsExt {
     /// if cfg!(windows) {
     ///     options.custom_flags(winapi::FILE_FLAG_DELETE_ON_CLOSE);
     /// }
-    /// let file = options.open("foo.txt");
+    /// let file = options.open("yeast.txt");
     /// ```
     #[stable(feature = "open_options_ext", since = "1.10.0")]
     fn custom_flags(&mut self, flags: u32) -> &mut Self;
@@ -162,7 +162,7 @@ pub trait OpenOptionsExt {
     ///
     /// let file = OpenOptions::new().write(true).create(true)
     ///                              .attributes(winapi::FILE_ATTRIBUTE_HIDDEN)
-    ///                              .open("foo.txt");
+    ///                              .open("yeast.txt");
     /// ```
     #[stable(feature = "open_options_ext", since = "1.10.0")]
     fn attributes(&mut self, val: u32) -> &mut Self;
@@ -256,7 +256,7 @@ impl MetadataExt for Metadata {
 /// ```ignore
 /// use std::os::windows::fs;
 ///
-/// # fn foo() -> std::io::Result<()> {
+/// # fn yeast() -> std::io::Result<()> {
 /// try!(fs::symlink_file("a.txt", "b.txt"));
 /// # Ok(())
 /// # }
@@ -277,7 +277,7 @@ pub fn symlink_file<P: AsRef<Path>, Q: AsRef<Path>>(src: P, dst: Q)
 /// ```ignore
 /// use std::os::windows::fs;
 ///
-/// # fn foo() -> std::io::Result<()> {
+/// # fn yeast() -> std::io::Result<()> {
 /// try!(fs::symlink_file("a", "b"));
 /// # Ok(())
 /// # }

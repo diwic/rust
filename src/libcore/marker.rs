@@ -59,11 +59,11 @@ impl<T: ?Sized> !Send for *mut T { }
 ///
 /// ```
 /// # #![allow(dead_code)]
-/// struct Foo<T>(T);
-/// struct Bar<T: ?Sized>(T);
+/// struct Yeast<T>(T);
+/// struct Mold<T: ?Sized>(T);
 ///
-/// // struct FooUse(Foo<[i32]>); // error: Sized is not implemented for [i32]
-/// struct BarUse(Bar<[i32]>); // OK
+/// // struct YeastUse(Yeast<[i32]>); // error: Sized is not implemented for [i32]
+/// struct MoldUse(Mold<[i32]>); // OK
 /// ```
 ///
 /// The one exception is the implicit `Self` type of a trait, which does not
@@ -72,15 +72,15 @@ impl<T: ?Sized> !Send for *mut T { }
 ///
 /// ```
 /// # #![allow(unused_variables)]
-/// trait Foo { }
-/// trait Bar: Sized { }
+/// trait Yeast { }
+/// trait Mold: Sized { }
 ///
 /// struct Impl;
-/// impl Foo for Impl { }
-/// impl Bar for Impl { }
+/// impl Yeast for Impl { }
+/// impl Mold for Impl { }
 ///
-/// let x: &Foo = &Impl;    // OK
-/// // let y: &Bar = &Impl; // error: the trait `Bar` cannot
+/// let x: &Yeast = &Impl;    // OK
+/// // let y: &Mold = &Impl; // error: the trait `Mold` cannot
 ///                         // be made into an object
 /// ```
 ///
@@ -120,9 +120,9 @@ pub trait Unsize<T: ?Sized> {
 ///
 /// ```
 /// #[derive(Debug)]
-/// struct Foo;
+/// struct Yeast;
 ///
-/// let x = Foo;
+/// let x = Yeast;
 ///
 /// let y = x;
 ///
@@ -137,9 +137,9 @@ pub trait Unsize<T: ?Sized> {
 /// // We can derive a `Copy` implementation. `Clone` is also required, as it's
 /// // a supertrait of `Copy`.
 /// #[derive(Debug, Copy, Clone)]
-/// struct Foo;
+/// struct Yeast;
 ///
-/// let x = Foo;
+/// let x = Yeast;
 ///
 /// let y = x;
 ///
@@ -559,19 +559,19 @@ mod impls {
 /// use std::any::Any;
 ///
 /// # #[allow(dead_code)]
-/// fn foo<T: Reflect + 'static>(x: &T) {
+/// fn yeast<T: Reflect + 'static>(x: &T) {
 ///     let any: &Any = x;
 ///     if any.is::<u32>() { println!("u32"); }
 /// }
 /// ```
 ///
-/// Without the bound `T: Reflect`, `foo` would not typecheck. (As
+/// Without the bound `T: Reflect`, `yeast` would not typecheck. (As
 /// a matter of style, it would be preferable to write `T: Any`,
 /// because `T: Any` implies `T: Reflect` and `T: 'static`, but we
 /// use `Reflect` here for illustrative purposes.)
 ///
-/// The `Reflect` bound serves to alert `foo`'s caller to the
-/// fact that `foo` may behave differently depending on whether
+/// The `Reflect` bound serves to alert `yeast`'s caller to the
+/// fact that `yeast` may behave differently depending on whether
 /// `T` is `u32` or not. The ability for a caller to reason about what
 /// a function may do based solely on what generic bounds are declared
 /// is often called the "[parametricity property][param]". Despite the

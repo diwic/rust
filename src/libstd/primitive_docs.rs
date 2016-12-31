@@ -270,8 +270,8 @@ mod prim_pointer { }
 /// - [`Default`][default]
 ///
 /// This limitation on the size `N` exists because Rust does not yet support
-/// code that is generic over the size of an array type. `[Foo; 3]` and `[Bar; 3]`
-/// are instances of same generic type `[T; 3]`, but `[Foo; 3]` and `[Foo; 5]` are
+/// code that is generic over the size of an array type. `[Yeast; 3]` and `[Mold; 3]`
+/// are instances of same generic type `[T; 3]`, but `[Yeast; 3]` and `[Yeast; 5]` are
 /// entirely different types. As a stopgap, trait implementations are
 /// statically generated up to size 32.
 ///

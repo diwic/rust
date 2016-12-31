@@ -150,8 +150,8 @@
 //! ```
 //! # #![allow(dead_code)]
 //! # use std::fmt;
-//! # struct Foo; // our custom type
-//! # impl fmt::Display for Foo {
+//! # struct Yeast; // our custom type
+//! # impl fmt::Display for Yeast {
 //! fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
 //! # write!(f, "testing, testing")
 //! # } }
@@ -239,7 +239,7 @@
 //! ```
 //! assert_eq!(format!("{} {:?}", 3, 4), "3 4");
 //! assert_eq!(format!("{} {:?}", 'a', 'b'), "a 'b'");
-//! assert_eq!(format!("{} {:?}", "foo\n", "bar\n"), "foo\n \"bar\\n\"");
+//! assert_eq!(format!("{} {:?}", "yeast\n", "mold\n"), "yeast\n \"mold\\n\"");
 //! ```
 //!
 //! ## Related macros

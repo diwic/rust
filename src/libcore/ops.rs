@@ -1432,24 +1432,24 @@ sub_assign_impl! { u128 i128 }
 ///
 /// # Examples
 ///
-/// A trivial implementation of `MulAssign`. When `Foo *= Foo` happens, it ends up
+/// A trivial implementation of `MulAssign`. When `Yeast *= Yeast` happens, it ends up
 /// calling `mul_assign`, and therefore, `main` prints `Multiplying!`.
 ///
 /// ```
 /// use std::ops::MulAssign;
 ///
-/// struct Foo;
+/// struct Yeast;
 ///
-/// impl MulAssign for Foo {
-///     fn mul_assign(&mut self, _rhs: Foo) {
+/// impl MulAssign for Yeast {
+///     fn mul_assign(&mut self, _rhs: Yeast) {
 ///         println!("Multiplying!");
 ///     }
 /// }
 ///
 /// # #[allow(unused_assignments)]
 /// fn main() {
-///     let mut foo = Foo;
-///     foo *= Foo;
+///     let mut yeast = Yeast;
+///     yeast *= Yeast;
 /// }
 /// ```
 #[lang = "mul_assign"]
@@ -1479,24 +1479,24 @@ mul_assign_impl! { u128 i128 }
 ///
 /// # Examples
 ///
-/// A trivial implementation of `DivAssign`. When `Foo /= Foo` happens, it ends up
+/// A trivial implementation of `DivAssign`. When `Yeast /= Yeast` happens, it ends up
 /// calling `div_assign`, and therefore, `main` prints `Dividing!`.
 ///
 /// ```
 /// use std::ops::DivAssign;
 ///
-/// struct Foo;
+/// struct Yeast;
 ///
-/// impl DivAssign for Foo {
-///     fn div_assign(&mut self, _rhs: Foo) {
+/// impl DivAssign for Yeast {
+///     fn div_assign(&mut self, _rhs: Yeast) {
 ///         println!("Dividing!");
 ///     }
 /// }
 ///
 /// # #[allow(unused_assignments)]
 /// fn main() {
-///     let mut foo = Foo;
-///     foo /= Foo;
+///     let mut yeast = Yeast;
+///     yeast /= Yeast;
 /// }
 /// ```
 #[lang = "div_assign"]
@@ -1525,24 +1525,24 @@ div_assign_impl! { u128 i128 }
 ///
 /// # Examples
 ///
-/// A trivial implementation of `RemAssign`. When `Foo %= Foo` happens, it ends up
+/// A trivial implementation of `RemAssign`. When `Yeast %= Yeast` happens, it ends up
 /// calling `rem_assign`, and therefore, `main` prints `Remainder-ing!`.
 ///
 /// ```
 /// use std::ops::RemAssign;
 ///
-/// struct Foo;
+/// struct Yeast;
 ///
-/// impl RemAssign for Foo {
-///     fn rem_assign(&mut self, _rhs: Foo) {
+/// impl RemAssign for Yeast {
+///     fn rem_assign(&mut self, _rhs: Yeast) {
 ///         println!("Remainder-ing!");
 ///     }
 /// }
 ///
 /// # #[allow(unused_assignments)]
 /// fn main() {
-///     let mut foo = Foo;
-///     foo %= Foo;
+///     let mut yeast = Yeast;
+///     yeast %= Yeast;
 /// }
 /// ```
 #[lang = "rem_assign"]
@@ -1659,24 +1659,24 @@ bitand_assign_impl! { u128 i128 }
 ///
 /// # Examples
 ///
-/// A trivial implementation of `BitOrAssign`. When `Foo |= Foo` happens, it ends up
+/// A trivial implementation of `BitOrAssign`. When `Yeast |= Yeast` happens, it ends up
 /// calling `bitor_assign`, and therefore, `main` prints `Bitwise Or-ing!`.
 ///
 /// ```
 /// use std::ops::BitOrAssign;
 ///
-/// struct Foo;
+/// struct Yeast;
 ///
-/// impl BitOrAssign for Foo {
-///     fn bitor_assign(&mut self, _rhs: Foo) {
+/// impl BitOrAssign for Yeast {
+///     fn bitor_assign(&mut self, _rhs: Yeast) {
 ///         println!("Bitwise Or-ing!");
 ///     }
 /// }
 ///
 /// # #[allow(unused_assignments)]
 /// fn main() {
-///     let mut foo = Foo;
-///     foo |= Foo;
+///     let mut yeast = Yeast;
+///     yeast |= Yeast;
 /// }
 /// ```
 #[lang = "bitor_assign"]
@@ -1705,24 +1705,24 @@ bitor_assign_impl! { u128 i128 }
 ///
 /// # Examples
 ///
-/// A trivial implementation of `BitXorAssign`. When `Foo ^= Foo` happens, it ends up
+/// A trivial implementation of `BitXorAssign`. When `Yeast ^= Yeast` happens, it ends up
 /// calling `bitxor_assign`, and therefore, `main` prints `Bitwise Xor-ing!`.
 ///
 /// ```
 /// use std::ops::BitXorAssign;
 ///
-/// struct Foo;
+/// struct Yeast;
 ///
-/// impl BitXorAssign for Foo {
-///     fn bitxor_assign(&mut self, _rhs: Foo) {
+/// impl BitXorAssign for Yeast {
+///     fn bitxor_assign(&mut self, _rhs: Yeast) {
 ///         println!("Bitwise Xor-ing!");
 ///     }
 /// }
 ///
 /// # #[allow(unused_assignments)]
 /// fn main() {
-///     let mut foo = Foo;
-///     foo ^= Foo;
+///     let mut yeast = Yeast;
+///     yeast ^= Yeast;
 /// }
 /// ```
 #[lang = "bitxor_assign"]
@@ -1751,24 +1751,24 @@ bitxor_assign_impl! { u128 i128 }
 ///
 /// # Examples
 ///
-/// A trivial implementation of `ShlAssign`. When `Foo <<= Foo` happens, it ends up
+/// A trivial implementation of `ShlAssign`. When `Yeast <<= Yeast` happens, it ends up
 /// calling `shl_assign`, and therefore, `main` prints `Shifting left!`.
 ///
 /// ```
 /// use std::ops::ShlAssign;
 ///
-/// struct Foo;
+/// struct Yeast;
 ///
-/// impl ShlAssign<Foo> for Foo {
-///     fn shl_assign(&mut self, _rhs: Foo) {
+/// impl ShlAssign<Yeast> for Yeast {
+///     fn shl_assign(&mut self, _rhs: Yeast) {
 ///         println!("Shifting left!");
 ///     }
 /// }
 ///
 /// # #[allow(unused_assignments)]
 /// fn main() {
-///     let mut foo = Foo;
-///     foo <<= Foo;
+///     let mut yeast = Yeast;
+///     yeast <<= Yeast;
 /// }
 /// ```
 #[lang = "shl_assign"]
@@ -1820,24 +1820,24 @@ shl_assign_impl_all! { u128 i128 }
 ///
 /// # Examples
 ///
-/// A trivial implementation of `ShrAssign`. When `Foo >>= Foo` happens, it ends up
+/// A trivial implementation of `ShrAssign`. When `Yeast >>= Yeast` happens, it ends up
 /// calling `shr_assign`, and therefore, `main` prints `Shifting right!`.
 ///
 /// ```
 /// use std::ops::ShrAssign;
 ///
-/// struct Foo;
+/// struct Yeast;
 ///
-/// impl ShrAssign<Foo> for Foo {
-///     fn shr_assign(&mut self, _rhs: Foo) {
+/// impl ShrAssign<Yeast> for Yeast {
+///     fn shr_assign(&mut self, _rhs: Yeast) {
 ///         println!("Shifting right!");
 ///     }
 /// }
 ///
 /// # #[allow(unused_assignments)]
 /// fn main() {
-///     let mut foo = Foo;
-///     foo >>= Foo;
+///     let mut yeast = Yeast;
+///     yeast >>= Yeast;
 /// }
 /// ```
 #[lang = "shr_assign"]

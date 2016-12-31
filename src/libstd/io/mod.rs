@@ -28,8 +28,8 @@
 //! use std::io::prelude::*;
 //! use std::fs::File;
 //!
-//! # fn foo() -> io::Result<()> {
-//! let mut f = try!(File::open("foo.txt"));
+//! # fn yeast() -> io::Result<()> {
+//! let mut f = try!(File::open("yeast.txt"));
 //! let mut buffer = [0; 10];
 //!
 //! // read up to 10 bytes
@@ -57,8 +57,8 @@
 //! use std::io::SeekFrom;
 //! use std::fs::File;
 //!
-//! # fn foo() -> io::Result<()> {
-//! let mut f = try!(File::open("foo.txt"));
+//! # fn yeast() -> io::Result<()> {
+//! let mut f = try!(File::open("yeast.txt"));
 //! let mut buffer = [0; 10];
 //!
 //! // skip to the last 10 bytes of the file
@@ -92,8 +92,8 @@
 //! use std::io::BufReader;
 //! use std::fs::File;
 //!
-//! # fn foo() -> io::Result<()> {
-//! let f = try!(File::open("foo.txt"));
+//! # fn yeast() -> io::Result<()> {
+//! let f = try!(File::open("yeast.txt"));
 //! let mut reader = BufReader::new(f);
 //! let mut buffer = String::new();
 //!
@@ -114,8 +114,8 @@
 //! use std::io::BufWriter;
 //! use std::fs::File;
 //!
-//! # fn foo() -> io::Result<()> {
-//! let f = try!(File::create("foo.txt"));
+//! # fn yeast() -> io::Result<()> {
+//! let f = try!(File::create("yeast.txt"));
 //! {
 //!     let mut writer = BufWriter::new(f);
 //!
@@ -135,7 +135,7 @@
 //! ```
 //! use std::io;
 //!
-//! # fn foo() -> io::Result<()> {
+//! # fn yeast() -> io::Result<()> {
 //! let mut input = String::new();
 //!
 //! try!(io::stdin().read_line(&mut input));
@@ -151,7 +151,7 @@
 //! use std::io;
 //! use std::io::prelude::*;
 //!
-//! # fn foo() -> io::Result<()> {
+//! # fn yeast() -> io::Result<()> {
 //! try!(io::stdout().write(&[42]));
 //! # Ok(())
 //! # }
@@ -172,8 +172,8 @@
 //! use std::io::BufReader;
 //! use std::fs::File;
 //!
-//! # fn foo() -> io::Result<()> {
-//! let f = try!(File::open("foo.txt"));
+//! # fn yeast() -> io::Result<()> {
+//! let f = try!(File::open("yeast.txt"));
 //! let reader = BufReader::new(f);
 //!
 //! for line in reader.lines() {
@@ -193,7 +193,7 @@
 //! ```
 //! use std::io;
 //!
-//! # fn foo() -> io::Result<()> {
+//! # fn yeast() -> io::Result<()> {
 //! try!(io::copy(&mut io::stdin(), &mut io::stdout()));
 //! # Ok(())
 //! # }
@@ -404,8 +404,8 @@ fn read_to_end<R: Read + ?Sized>(r: &mut R, buf: &mut Vec<u8>) -> Result<usize> 
 /// use std::io::prelude::*;
 /// use std::fs::File;
 ///
-/// # fn foo() -> io::Result<()> {
-/// let mut f = try!(File::open("foo.txt"));
+/// # fn yeast() -> io::Result<()> {
+/// let mut f = try!(File::open("yeast.txt"));
 /// let mut buffer = [0; 10];
 ///
 /// // read up to 10 bytes
@@ -464,8 +464,8 @@ pub trait Read {
     /// use std::io::prelude::*;
     /// use std::fs::File;
     ///
-    /// # fn foo() -> io::Result<()> {
-    /// let mut f = try!(File::open("foo.txt"));
+    /// # fn yeast() -> io::Result<()> {
+    /// let mut f = try!(File::open("yeast.txt"));
     /// let mut buffer = [0; 10];
     ///
     /// // read 10 bytes
@@ -506,8 +506,8 @@ pub trait Read {
     /// use std::io::prelude::*;
     /// use std::fs::File;
     ///
-    /// # fn foo() -> io::Result<()> {
-    /// let mut f = try!(File::open("foo.txt"));
+    /// # fn yeast() -> io::Result<()> {
+    /// let mut f = try!(File::open("yeast.txt"));
     /// let mut buffer = Vec::new();
     ///
     /// // read the whole file
@@ -545,8 +545,8 @@ pub trait Read {
     /// use std::io::prelude::*;
     /// use std::fs::File;
     ///
-    /// # fn foo() -> io::Result<()> {
-    /// let mut f = try!(File::open("foo.txt"));
+    /// # fn yeast() -> io::Result<()> {
+    /// let mut f = try!(File::open("yeast.txt"));
     /// let mut buffer = String::new();
     ///
     /// try!(f.read_to_string(&mut buffer));
@@ -605,8 +605,8 @@ pub trait Read {
     /// use std::io::prelude::*;
     /// use std::fs::File;
     ///
-    /// # fn foo() -> io::Result<()> {
-    /// let mut f = try!(File::open("foo.txt"));
+    /// # fn yeast() -> io::Result<()> {
+    /// let mut f = try!(File::open("yeast.txt"));
     /// let mut buffer = [0; 10];
     ///
     /// // read exactly 10 bytes
@@ -648,8 +648,8 @@ pub trait Read {
     /// use std::io::Read;
     /// use std::fs::File;
     ///
-    /// # fn foo() -> io::Result<()> {
-    /// let mut f = try!(File::open("foo.txt"));
+    /// # fn yeast() -> io::Result<()> {
+    /// let mut f = try!(File::open("yeast.txt"));
     /// let mut buffer = Vec::new();
     /// let mut other_buffer = Vec::new();
     ///
@@ -687,8 +687,8 @@ pub trait Read {
     /// use std::io::prelude::*;
     /// use std::fs::File;
     ///
-    /// # fn foo() -> io::Result<()> {
-    /// let mut f = try!(File::open("foo.txt"));
+    /// # fn yeast() -> io::Result<()> {
+    /// let mut f = try!(File::open("yeast.txt"));
     ///
     /// for byte in f.bytes() {
     ///     println!("{}", byte.unwrap());
@@ -724,8 +724,8 @@ pub trait Read {
     /// use std::io::prelude::*;
     /// use std::fs::File;
     ///
-    /// # fn foo() -> io::Result<()> {
-    /// let mut f = try!(File::open("foo.txt"));
+    /// # fn yeast() -> io::Result<()> {
+    /// let mut f = try!(File::open("yeast.txt"));
     ///
     /// for c in f.chars() {
     ///     println!("{}", c.unwrap());
@@ -758,9 +758,9 @@ pub trait Read {
     /// use std::io::prelude::*;
     /// use std::fs::File;
     ///
-    /// # fn foo() -> io::Result<()> {
-    /// let mut f1 = try!(File::open("foo.txt"));
-    /// let mut f2 = try!(File::open("bar.txt"));
+    /// # fn yeast() -> io::Result<()> {
+    /// let mut f1 = try!(File::open("yeast.txt"));
+    /// let mut f2 = try!(File::open("mold.txt"));
     ///
     /// let mut handle = f1.chain(f2);
     /// let mut buffer = String::new();
@@ -794,8 +794,8 @@ pub trait Read {
     /// use std::io::prelude::*;
     /// use std::fs::File;
     ///
-    /// # fn foo() -> io::Result<()> {
-    /// let mut f = try!(File::open("foo.txt"));
+    /// # fn yeast() -> io::Result<()> {
+    /// let mut f = try!(File::open("yeast.txt"));
     /// let mut buffer = [0; 5];
     ///
     /// // read at most five bytes
@@ -838,8 +838,8 @@ pub trait Read {
 /// use std::io::prelude::*;
 /// use std::fs::File;
 ///
-/// # fn foo() -> std::io::Result<()> {
-/// let mut buffer = try!(File::create("foo.txt"));
+/// # fn yeast() -> std::io::Result<()> {
+/// let mut buffer = try!(File::create("yeast.txt"));
 ///
 /// try!(buffer.write(b"some bytes"));
 /// # Ok(())
@@ -878,8 +878,8 @@ pub trait Write {
     /// use std::io::prelude::*;
     /// use std::fs::File;
     ///
-    /// # fn foo() -> std::io::Result<()> {
-    /// let mut buffer = try!(File::create("foo.txt"));
+    /// # fn yeast() -> std::io::Result<()> {
+    /// let mut buffer = try!(File::create("yeast.txt"));
     ///
     /// try!(buffer.write(b"some bytes"));
     /// # Ok(())
@@ -903,8 +903,8 @@ pub trait Write {
     /// use std::io::BufWriter;
     /// use std::fs::File;
     ///
-    /// # fn foo() -> std::io::Result<()> {
-    /// let mut buffer = BufWriter::new(try!(File::create("foo.txt")));
+    /// # fn yeast() -> std::io::Result<()> {
+    /// let mut buffer = BufWriter::new(try!(File::create("yeast.txt")));
     ///
     /// try!(buffer.write(b"some bytes"));
     /// try!(buffer.flush());
@@ -931,8 +931,8 @@ pub trait Write {
     /// use std::io::prelude::*;
     /// use std::fs::File;
     ///
-    /// # fn foo() -> std::io::Result<()> {
-    /// let mut buffer = try!(File::create("foo.txt"));
+    /// # fn yeast() -> std::io::Result<()> {
+    /// let mut buffer = try!(File::create("yeast.txt"));
     ///
     /// try!(buffer.write_all(b"some bytes"));
     /// # Ok(())
@@ -980,8 +980,8 @@ pub trait Write {
     /// use std::io::prelude::*;
     /// use std::fs::File;
     ///
-    /// # fn foo() -> std::io::Result<()> {
-    /// let mut buffer = try!(File::create("foo.txt"));
+    /// # fn yeast() -> std::io::Result<()> {
+    /// let mut buffer = try!(File::create("yeast.txt"));
     ///
     /// // this call
     /// try!(write!(buffer, "{:.*}", 2, 1.234567));
@@ -1036,8 +1036,8 @@ pub trait Write {
     /// use std::io::Write;
     /// use std::fs::File;
     ///
-    /// # fn foo() -> std::io::Result<()> {
-    /// let mut buffer = try!(File::create("foo.txt"));
+    /// # fn yeast() -> std::io::Result<()> {
+    /// let mut buffer = try!(File::create("yeast.txt"));
     ///
     /// let reference = buffer.by_ref();
     ///
@@ -1068,8 +1068,8 @@ pub trait Write {
 /// use std::fs::File;
 /// use std::io::SeekFrom;
 ///
-/// # fn foo() -> io::Result<()> {
-/// let mut f = try!(File::open("foo.txt"));
+/// # fn yeast() -> io::Result<()> {
+/// let mut f = try!(File::open("yeast.txt"));
 ///
 /// // move the cursor 42 bytes from the start of the file
 /// try!(f.seek(SeekFrom::Start(42)));
@@ -1192,8 +1192,8 @@ fn read_until<R: BufRead + ?Sized>(r: &mut R, delim: u8, buf: &mut Vec<u8>)
 /// use std::io::prelude::*;
 /// use std::fs::File;
 ///
-/// # fn foo() -> io::Result<()> {
-/// let f = try!(File::open("foo.txt"));
+/// # fn yeast() -> io::Result<()> {
+/// let f = try!(File::open("yeast.txt"));
 /// let f = BufReader::new(f);
 ///
 /// for line in f.lines() {
@@ -1302,7 +1302,7 @@ pub trait BufRead: Read {
     /// use std::io;
     /// use std::io::prelude::*;
     ///
-    /// fn foo() -> io::Result<()> {
+    /// fn yeast() -> io::Result<()> {
     /// let stdin = io::stdin();
     /// let mut stdin = stdin.lock();
     /// let mut buffer = Vec::new();
@@ -1525,8 +1525,8 @@ impl<T> Take<T> {
     /// use std::io::prelude::*;
     /// use std::fs::File;
     ///
-    /// # fn foo() -> io::Result<()> {
-    /// let f = try!(File::open("foo.txt"));
+    /// # fn yeast() -> io::Result<()> {
+    /// let f = try!(File::open("yeast.txt"));
     ///
     /// // read at most five bytes
     /// let handle = f.take(5);
@@ -1547,8 +1547,8 @@ impl<T> Take<T> {
     /// use std::io::prelude::*;
     /// use std::fs::File;
     ///
-    /// # fn foo() -> io::Result<()> {
-    /// let mut file = try!(File::open("foo.txt"));
+    /// # fn yeast() -> io::Result<()> {
+    /// let mut file = try!(File::open("yeast.txt"));
     ///
     /// let mut buffer = [0; 5];
     /// let mut handle = file.take(5);

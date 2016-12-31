@@ -391,7 +391,7 @@ impl<T> Option<T> {
     /// # Examples
     ///
     /// ```
-    /// let x = Some("foo");
+    /// let x = Some("yeast");
     /// assert_eq!(x.map_or(42, |v| v.len()), 3);
     ///
     /// let x: Option<&str> = None;
@@ -414,7 +414,7 @@ impl<T> Option<T> {
     /// ```
     /// let k = 21;
     ///
-    /// let x = Some("foo");
+    /// let x = Some("yeast");
     /// assert_eq!(x.map_or_else(|| 2 * k, |v| v.len()), 3);
     ///
     /// let x: Option<&str> = None;
@@ -439,8 +439,8 @@ impl<T> Option<T> {
     /// # Examples
     ///
     /// ```
-    /// let x = Some("foo");
-    /// assert_eq!(x.ok_or(0), Ok("foo"));
+    /// let x = Some("yeast");
+    /// assert_eq!(x.ok_or(0), Ok("yeast"));
     ///
     /// let x: Option<&str> = None;
     /// assert_eq!(x.ok_or(0), Err(0));
@@ -464,8 +464,8 @@ impl<T> Option<T> {
     /// # Examples
     ///
     /// ```
-    /// let x = Some("foo");
-    /// assert_eq!(x.ok_or_else(|| 0), Ok("foo"));
+    /// let x = Some("yeast");
+    /// assert_eq!(x.ok_or_else(|| 0), Ok("yeast"));
     ///
     /// let x: Option<&str> = None;
     /// assert_eq!(x.ok_or_else(|| 0), Err(0));
@@ -535,12 +535,12 @@ impl<T> Option<T> {
     /// assert_eq!(x.and(y), None);
     ///
     /// let x: Option<u32> = None;
-    /// let y = Some("foo");
+    /// let y = Some("yeast");
     /// assert_eq!(x.and(y), None);
     ///
     /// let x = Some(2);
-    /// let y = Some("foo");
-    /// assert_eq!(x.and(y), Some("foo"));
+    /// let y = Some("yeast");
+    /// assert_eq!(x.and(y), Some("yeast"));
     ///
     /// let x: Option<u32> = None;
     /// let y: Option<&str> = None;
@@ -619,7 +619,7 @@ impl<T> Option<T> {
     /// fn nobody() -> Option<&'static str> { None }
     /// fn vikings() -> Option<&'static str> { Some("vikings") }
     ///
-    /// assert_eq!(Some("barbarians").or_else(vikings), Some("barbarians"));
+    /// assert_eq!(Some("moldmoldians").or_else(vikings), Some("moldmoldians"));
     /// assert_eq!(None.or_else(vikings), Some("vikings"));
     /// assert_eq!(None.or_else(nobody), None);
     /// ```

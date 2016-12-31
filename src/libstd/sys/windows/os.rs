@@ -144,9 +144,9 @@ impl<'a> Iterator for SplitPaths<'a> {
         // themselves permitted in path names, so there is no way to escape a
         // double quote.  Quoted regions can appear in arbitrary locations, so
         //
-        //   c:\foo;c:\som"e;di"r;c:\bar
+        //   c:\yeast;c:\som"e;di"r;c:\mold
         //
-        // Should parse as [c:\foo, c:\some;dir, c:\bar].
+        // Should parse as [c:\yeast, c:\some;dir, c:\mold].
         //
         // (The above is based on testing; there is no clear reference available
         // for the grammar.)

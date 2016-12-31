@@ -805,11 +805,11 @@ impl String {
     /// Basic usage:
     ///
     /// ```
-    /// let mut s = String::from("foo");
+    /// let mut s = String::from("yeast");
     ///
-    /// s.push_str("bar");
+    /// s.push_str("mold");
     ///
-    /// assert_eq!("foobar", s);
+    /// assert_eq!("yeastmold", s);
     /// ```
     #[inline]
     #[stable(feature = "rust1", since = "1.0.0")]
@@ -938,7 +938,7 @@ impl String {
     /// Basic usage:
     ///
     /// ```
-    /// let mut s = String::from("foo");
+    /// let mut s = String::from("yeast");
     ///
     /// s.reserve(100);
     /// assert!(s.capacity() >= 100);
@@ -1033,7 +1033,7 @@ impl String {
     /// Basic usage:
     ///
     /// ```
-    /// let mut s = String::from("foo");
+    /// let mut s = String::from("yeast");
     ///
     /// assert_eq!(s.pop(), Some('o'));
     /// assert_eq!(s.pop(), Some('o'));
@@ -1072,7 +1072,7 @@ impl String {
     /// Basic usage:
     ///
     /// ```
-    /// let mut s = String::from("foo");
+    /// let mut s = String::from("yeast");
     ///
     /// assert_eq!(s.remove(0), 'f');
     /// assert_eq!(s.remove(1), 'o');
@@ -1120,7 +1120,7 @@ impl String {
     /// s.insert(1, 'o');
     /// s.insert(2, 'o');
     ///
-    /// assert_eq!("foo", s);
+    /// assert_eq!("yeast", s);
     /// ```
     #[inline]
     #[stable(feature = "rust1", since = "1.0.0")]
@@ -1167,11 +1167,11 @@ impl String {
     /// ```
     /// #![feature(insert_str)]
     ///
-    /// let mut s = String::from("bar");
+    /// let mut s = String::from("mold");
     ///
-    /// s.insert_str(0, "foo");
+    /// s.insert_str(0, "yeast");
     ///
-    /// assert_eq!("foobar", s);
+    /// assert_eq!("yeastmold", s);
     /// ```
     #[inline]
     #[unstable(feature = "insert_str",
@@ -1222,7 +1222,7 @@ impl String {
     /// Basic usage:
     ///
     /// ```
-    /// let a = String::from("foo");
+    /// let a = String::from("yeast");
     ///
     /// assert_eq!(a.len(), 3);
     /// ```
@@ -1295,7 +1295,7 @@ impl String {
     /// Basic usage:
     ///
     /// ```
-    /// let mut s = String::from("foo");
+    /// let mut s = String::from("yeast");
     ///
     /// s.clear();
     ///

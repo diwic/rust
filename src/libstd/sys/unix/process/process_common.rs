@@ -333,7 +333,7 @@ fn pair_to_key(key: &OsStr, value: &OsStr, saw_nul: &mut bool) -> CString {
     v.extend(value);
     CString::new(v).unwrap_or_else(|_e| {
         *saw_nul = true;
-        CString::new("foo=bar").unwrap()
+        CString::new("yeast=mold").unwrap()
     })
 }
 

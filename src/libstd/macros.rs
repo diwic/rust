@@ -278,9 +278,9 @@ pub mod builtin {
     /// #![feature(concat_idents)]
     ///
     /// # fn main() {
-    /// fn foobar() -> u32 { 23 }
+    /// fn yeastmold() -> u32 { 23 }
     ///
-    /// let f = concat_idents!(foo, bar);
+    /// let f = concat_idents!(yeast, mold);
     /// println!("{}", f());
     ///
     /// // fn concat_idents!(new, fun, name) { } // not usable in this way!
@@ -423,12 +423,12 @@ pub mod builtin {
     ///
     /// ```
     /// mod test {
-    ///     pub fn foo() {
+    ///     pub fn yeast() {
     ///         assert!(module_path!().ends_with("test"));
     ///     }
     /// }
     ///
-    /// test::foo();
+    /// test::yeast();
     /// ```
     #[stable(feature = "rust1", since = "1.0.0")]
     #[macro_export]
@@ -471,7 +471,7 @@ pub mod builtin {
     /// # Examples
     ///
     /// ```ignore
-    /// fn foo() {
+    /// fn yeast() {
     ///     include!("/path/to/a/file")
     /// }
     /// ```

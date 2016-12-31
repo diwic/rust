@@ -71,7 +71,7 @@ pub use intrinsics::transmute;
 /// use std::mem;
 /// use std::fs::File;
 ///
-/// let file = File::open("foo.txt").unwrap();
+/// let file = File::open("yeast.txt").unwrap();
 /// mem::forget(file);
 /// ```
 ///
@@ -597,10 +597,10 @@ pub fn replace<T>(dest: &mut T, mut src: T) -> T {
 ///
 /// ```
 /// #[derive(Copy, Clone)]
-/// struct Foo(u8);
+/// struct Yeast(u8);
 ///
 /// let x = 1;
-/// let y = Foo(2);
+/// let y = Yeast(2);
 /// drop(x); // a copy of `x` is moved and dropped
 /// drop(y); // a copy of `y` is moved and dropped
 ///
@@ -635,24 +635,24 @@ pub fn drop<T>(_x: T) { }
 /// use std::mem;
 ///
 /// #[repr(packed)]
-/// struct Foo {
-///     bar: u8,
+/// struct Yeast {
+///     mold: u8,
 /// }
 ///
-/// let foo_slice = [10u8];
+/// let yeast_slice = [10u8];
 ///
 /// unsafe {
-///     // Copy the data from 'foo_slice' and treat it as a 'Foo'
-///     let mut foo_struct: Foo = mem::transmute_copy(&foo_slice);
-///     assert_eq!(foo_struct.bar, 10);
+///     // Copy the data from 'yeast_slice' and treat it as a 'Yeast'
+///     let mut yeast_struct: Yeast = mem::transmute_copy(&yeast_slice);
+///     assert_eq!(yeast_struct.mold, 10);
 ///
 ///     // Modify the copied data
-///     foo_struct.bar = 20;
-///     assert_eq!(foo_struct.bar, 20);
+///     yeast_struct.mold = 20;
+///     assert_eq!(yeast_struct.mold, 20);
 /// }
 ///
-/// // The contents of 'foo_slice' should not have changed
-/// assert_eq!(foo_slice, [10]);
+/// // The contents of 'yeast_slice' should not have changed
+/// assert_eq!(yeast_slice, [10]);
 /// ```
 #[inline]
 #[stable(feature = "rust1", since = "1.0.0")]
@@ -723,11 +723,11 @@ impl<T> fmt::Debug for Discriminant<T> {
 /// #![feature(discriminant_value)]
 /// use std::mem;
 ///
-/// enum Foo { A(&'static str), B(i32), C(i32) }
+/// enum Yeast { A(&'static str), B(i32), C(i32) }
 ///
-/// assert!(mem::discriminant(&Foo::A("bar")) == mem::discriminant(&Foo::A("baz")));
-/// assert!(mem::discriminant(&Foo::B(1))     == mem::discriminant(&Foo::B(2)));
-/// assert!(mem::discriminant(&Foo::B(3))     != mem::discriminant(&Foo::C(3)));
+/// assert!(mem::discriminant(&Yeast::A("mold")) == mem::discriminant(&Yeast::A("baz")));
+/// assert!(mem::discriminant(&Yeast::B(1))     == mem::discriminant(&Yeast::B(2)));
+/// assert!(mem::discriminant(&Yeast::B(3))     != mem::discriminant(&Yeast::C(3)));
 /// ```
 #[unstable(feature = "discriminant_value", reason = "recently added, follows RFC", issue = "24263")]
 pub fn discriminant<T>(v: &T) -> Discriminant<T> {

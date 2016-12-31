@@ -364,9 +364,9 @@ pub trait Iterator {
     /// ending the zipper. Zipping with `(0..)` can look a lot like [`enumerate()`]:
     ///
     /// ```
-    /// let enumerate: Vec<_> = "foo".chars().enumerate().collect();
+    /// let enumerate: Vec<_> = "yeast".chars().enumerate().collect();
     ///
-    /// let zipper: Vec<_> = (0..).zip("foo".chars()).collect();
+    /// let zipper: Vec<_> = (0..).zip("yeast".chars()).collect();
     ///
     /// assert_eq!((0, 'f'), enumerate[0]);
     /// assert_eq!((0, 'f'), zipper[0]);

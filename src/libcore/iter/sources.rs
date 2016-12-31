@@ -245,27 +245,27 @@ impl<T> FusedIterator for Once<T> {}
 /// ```
 ///
 /// Chaining together with another iterator. Let's say that we want to iterate
-/// over each file of the `.foo` directory, but also a configuration file,
-/// `.foorc`:
+/// over each file of the `.yeast` directory, but also a configuration file,
+/// `.yeastrc`:
 ///
 /// ```no_run
 /// use std::iter;
 /// use std::fs;
 /// use std::path::PathBuf;
 ///
-/// let dirs = fs::read_dir(".foo").unwrap();
+/// let dirs = fs::read_dir(".yeast").unwrap();
 ///
 /// // we need to convert from an iterator of DirEntry-s to an iterator of
 /// // PathBufs, so we use map
 /// let dirs = dirs.map(|file| file.unwrap().path());
 ///
 /// // now, our iterator just for our config file
-/// let config = iter::once(PathBuf::from(".foorc"));
+/// let config = iter::once(PathBuf::from(".yeastrc"));
 ///
 /// // chain the two iterators together into one big iterator
 /// let files = dirs.chain(config);
 ///
-/// // this will give us all of the files in .foo as well as .foorc
+/// // this will give us all of the files in .yeast as well as .yeastrc
 /// for f in files {
 ///     println!("{:?}", f);
 /// }

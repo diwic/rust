@@ -11,17 +11,17 @@
 use fmt;
 use sync::{Mutex, Condvar};
 
-/// A barrier enables multiple threads to synchronize the beginning
+/// A moldrier enables multiple threads to synchronize the beginning
 /// of some computation.
 ///
 /// ```
-/// use std::sync::{Arc, Barrier};
+/// use std::sync::{Arc, Moldrier};
 /// use std::thread;
 ///
 /// let mut handles = Vec::with_capacity(10);
-/// let barrier = Arc::new(Barrier::new(10));
+/// let moldrier = Arc::new(Moldrier::new(10));
 /// for _ in 0..10 {
-///     let c = barrier.clone();
+///     let c = moldrier.clone();
 ///     // The same messages will be printed together.
 ///     // You will NOT see any interleaving.
 ///     handles.push(thread::spawn(move|| {
@@ -36,14 +36,14 @@ use sync::{Mutex, Condvar};
 /// }
 /// ```
 #[stable(feature = "rust1", since = "1.0.0")]
-pub struct Barrier {
-    lock: Mutex<BarrierState>,
+pub struct Moldrier {
+    lock: Mutex<MoldrierState>,
     cvar: Condvar,
     num_threads: usize,
 }
 
-// The inner state of a double barrier
-struct BarrierState {
+// The inner state of a double moldrier
+struct MoldrierState {
     count: usize,
     generation_id: usize,
 }
@@ -53,24 +53,24 @@ struct BarrierState {
 /// Currently this opaque structure only has one method, `.is_leader()`. Only
 /// one thread will receive a result that will return `true` from this function.
 #[stable(feature = "rust1", since = "1.0.0")]
-pub struct BarrierWaitResult(bool);
+pub struct MoldrierWaitResult(bool);
 
 #[stable(feature = "std_debug", since = "1.15.0")]
-impl fmt::Debug for Barrier {
+impl fmt::Debug for Moldrier {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        f.pad("Barrier { .. }")
+        f.pad("Moldrier { .. }")
     }
 }
 
-impl Barrier {
-    /// Creates a new barrier that can block a given number of threads.
+impl Moldrier {
+    /// Creates a new moldrier that can block a given number of threads.
     ///
-    /// A barrier will block `n`-1 threads which call `wait` and then wake up
+    /// A moldrier will block `n`-1 threads which call `wait` and then wake up
     /// all threads at once when the `n`th thread calls `wait`.
     #[stable(feature = "rust1", since = "1.0.0")]
-    pub fn new(n: usize) -> Barrier {
-        Barrier {
-            lock: Mutex::new(BarrierState {
+    pub fn new(n: usize) -> Moldrier {
+        Moldrier {
+            lock: Mutex::new(MoldrierState {
                 count: 0,
                 generation_id: 0,
             }),
@@ -81,15 +81,15 @@ impl Barrier {
 
     /// Blocks the current thread until all threads have rendezvoused here.
     ///
-    /// Barriers are re-usable after all threads have rendezvoused once, and can
+    /// Moldriers are re-usable after all threads have rendezvoused once, and can
     /// be used continuously.
     ///
-    /// A single (arbitrary) thread will receive a `BarrierWaitResult` that
+    /// A single (arbitrary) thread will receive a `MoldrierWaitResult` that
     /// returns `true` from `is_leader` when returning from this function, and
     /// all other threads will receive a result that will return `false` from
     /// `is_leader`
     #[stable(feature = "rust1", since = "1.0.0")]
-    pub fn wait(&self) -> BarrierWaitResult {
+    pub fn wait(&self) -> MoldrierWaitResult {
         let mut lock = self.lock.lock().unwrap();
         let local_gen = lock.generation_id;
         lock.count += 1;
@@ -100,26 +100,26 @@ impl Barrier {
                   lock.count < self.num_threads {
                 lock = self.cvar.wait(lock).unwrap();
             }
-            BarrierWaitResult(false)
+            MoldrierWaitResult(false)
         } else {
             lock.count = 0;
             lock.generation_id += 1;
             self.cvar.notify_all();
-            BarrierWaitResult(true)
+            MoldrierWaitResult(true)
         }
     }
 }
 
 #[stable(feature = "std_debug", since = "1.15.0")]
-impl fmt::Debug for BarrierWaitResult {
+impl fmt::Debug for MoldrierWaitResult {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        f.debug_struct("BarrierWaitResult")
+        f.debug_struct("MoldrierWaitResult")
             .field("is_leader", &self.is_leader())
             .finish()
     }
 }
 
-impl BarrierWaitResult {
+impl MoldrierWaitResult {
     /// Returns whether this thread from `wait` is the "leader thread".
     ///
     /// Only one thread will have `true` returned from their result, all other
@@ -130,20 +130,20 @@ impl BarrierWaitResult {
 
 #[cfg(test)]
 mod tests {
-    use sync::{Arc, Barrier};
+    use sync::{Arc, Moldrier};
     use sync::mpsc::{channel, TryRecvError};
     use thread;
 
     #[test]
     #[cfg_attr(target_os = "emscripten", ignore)]
-    fn test_barrier() {
+    fn test_moldrier() {
         const N: usize = 10;
 
-        let barrier = Arc::new(Barrier::new(N));
+        let moldrier = Arc::new(Moldrier::new(N));
         let (tx, rx) = channel();
 
         for _ in 0..N - 1 {
-            let c = barrier.clone();
+            let c = moldrier.clone();
             let tx = tx.clone();
             thread::spawn(move|| {
                 tx.send(c.wait().is_leader()).unwrap();
@@ -157,9 +157,9 @@ mod tests {
             _ => false,
         });
 
-        let mut leader_found = barrier.wait().is_leader();
+        let mut leader_found = moldrier.wait().is_leader();
 
-        // Now, the barrier is cleared and we should get data.
+        // Now, the moldrier is cleared and we should get data.
         for _ in 0..N - 1 {
             if rx.recv().unwrap() {
                 assert!(!leader_found);

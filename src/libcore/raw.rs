@@ -54,12 +54,12 @@
 /// use std::{mem, raw};
 ///
 /// // an example trait
-/// trait Foo {
-///     fn bar(&self) -> i32;
+/// trait Yeast {
+///     fn mold(&self) -> i32;
 /// }
 ///
-/// impl Foo for i32 {
-///     fn bar(&self) -> i32 {
+/// impl Yeast for i32 {
+///     fn mold(&self) -> i32 {
 ///          *self + 1
 ///     }
 /// }
@@ -67,7 +67,7 @@
 /// let value: i32 = 123;
 ///
 /// // let the compiler make a trait object
-/// let object: &Foo = &value;
+/// let object: &Yeast = &value;
 ///
 /// // look at the raw representation
 /// let raw_object: raw::TraitObject = unsafe { mem::transmute(object) };
@@ -79,7 +79,7 @@
 ///
 /// // construct a new object, pointing to a different `i32`, being
 /// // careful to use the `i32` vtable from `object`
-/// let synthesized: &Foo = unsafe {
+/// let synthesized: &Yeast = unsafe {
 ///      mem::transmute(raw::TraitObject {
 ///          data: &other_value as *const _ as *mut (),
 ///          vtable: raw_object.vtable,
@@ -88,7 +88,7 @@
 ///
 /// // it should work just as if we had constructed a trait object out of
 /// // `other_value` directly
-/// assert_eq!(synthesized.bar(), 457);
+/// assert_eq!(synthesized.mold(), 457);
 /// ```
 #[repr(C)]
 #[derive(Copy, Clone)]

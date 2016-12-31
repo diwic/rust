@@ -245,7 +245,7 @@ impl OsStr {
     /// ```
     /// use std::ffi::OsStr;
     ///
-    /// let os_str = OsStr::new("foo");
+    /// let os_str = OsStr::new("yeast");
     /// ```
     #[stable(feature = "rust1", since = "1.0.0")]
     pub fn new<S: AsRef<OsStr> + ?Sized>(s: &S) -> &OsStr {
@@ -288,7 +288,7 @@ impl OsStr {
     /// let os_str = OsStr::new("");
     /// assert!(os_str.is_empty());
     ///
-    /// let os_str = OsStr::new("foo");
+    /// let os_str = OsStr::new("yeast");
     /// assert!(!os_str.is_empty());
     /// ```
     #[stable(feature = "osstring_simple_functions", since = "1.9.0")]
@@ -313,7 +313,7 @@ impl OsStr {
     /// let os_str = OsStr::new("");
     /// assert_eq!(os_str.len(), 0);
     ///
-    /// let os_str = OsStr::new("foo");
+    /// let os_str = OsStr::new("yeast");
     /// assert_eq!(os_str.len(), 3);
     /// ```
     #[stable(feature = "osstring_simple_functions", since = "1.9.0")]

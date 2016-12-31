@@ -55,12 +55,12 @@ use io::{self, SeekFrom, Error, ErrorKind};
 ///     Ok(())
 /// }
 ///
-/// # fn foo() -> io::Result<()> {
+/// # fn yeast() -> io::Result<()> {
 /// // Here's some code that uses this library function.
 /// //
 /// // We might want to use a BufReader here for efficiency, but let's
 /// // keep this example focused.
-/// let mut file = try!(File::create("foo.txt"));
+/// let mut file = try!(File::create("yeast.txt"));
 ///
 /// try!(write_ten_bytes_at_end(&mut file));
 /// # Ok(())

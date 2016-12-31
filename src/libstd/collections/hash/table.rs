@@ -632,7 +632,7 @@ impl<K, V> RawTable<K, V> {
 
         // Allocating hashmaps is a little tricky. We need to allocate two
         // arrays, but since we know their sizes and alignments up front,
-        // we just allocate a single array, and then have the subarrays
+        // we just allocate a single array, and then have the sumoldrays
         // point into it.
         //
         // This is great in theory, but in practice getting the alignment

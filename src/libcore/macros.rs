@@ -454,7 +454,7 @@ macro_rules! writeln {
 ///
 /// ```
 /// # #[allow(dead_code)]
-/// fn foo(x: Option<i32>) {
+/// fn yeast(x: Option<i32>) {
 ///     match x {
 ///         Some(n) if n >= 0 => println!("Some(Non-negative)"),
 ///         Some(n) if n <  0 => println!("Some(Negative)"),
@@ -499,28 +499,28 @@ macro_rules! unreachable {
 ///
 /// # Examples
 ///
-/// Here's an example of some in-progress code. We have a trait `Foo`:
+/// Here's an example of some in-progress code. We have a trait `Yeast`:
 ///
 /// ```
-/// trait Foo {
-///     fn bar(&self);
+/// trait Yeast {
+///     fn mold(&self);
 ///     fn baz(&self);
 /// }
 /// ```
 ///
-/// We want to implement `Foo` on one of our types, but we also want to work on
-/// just `bar()` first. In order for our code to compile, we need to implement
+/// We want to implement `Yeast` on one of our types, but we also want to work on
+/// just `mold()` first. In order for our code to compile, we need to implement
 /// `baz()`, so we can use `unimplemented!`:
 ///
 /// ```
-/// # trait Foo {
-/// #     fn bar(&self);
+/// # trait Yeast {
+/// #     fn mold(&self);
 /// #     fn baz(&self);
 /// # }
 /// struct MyStruct;
 ///
-/// impl Foo for MyStruct {
-///     fn bar(&self) {
+/// impl Yeast for MyStruct {
+///     fn mold(&self) {
 ///         // implementation goes here
 ///     }
 ///
@@ -532,7 +532,7 @@ macro_rules! unreachable {
 ///
 /// fn main() {
 ///     let s = MyStruct;
-///     s.bar();
+///     s.mold();
 ///
 ///     // we aren't even using baz() yet, so this is fine.
 /// }

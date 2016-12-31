@@ -682,12 +682,12 @@ impl<T> Vec<T> {
     /// # Examples
     ///
     /// ```
-    /// let mut v = vec!["foo", "bar", "baz", "qux"];
+    /// let mut v = vec!["yeast", "mold", "baz", "qux"];
     ///
-    /// assert_eq!(v.swap_remove(1), "bar");
-    /// assert_eq!(v, ["foo", "qux", "baz"]);
+    /// assert_eq!(v.swap_remove(1), "mold");
+    /// assert_eq!(v, ["yeast", "qux", "baz"]);
     ///
-    /// assert_eq!(v.swap_remove(0), "foo");
+    /// assert_eq!(v.swap_remove(0), "yeast");
     /// assert_eq!(v, ["baz", "qux"]);
     /// ```
     #[inline]
@@ -842,11 +842,11 @@ impl<T> Vec<T> {
     /// #![feature(dedup_by)]
     /// use std::ascii::AsciiExt;
     ///
-    /// let mut vec = vec!["foo", "bar", "Bar", "baz", "bar"];
+    /// let mut vec = vec!["yeast", "mold", "Mold", "baz", "mold"];
     ///
     /// vec.dedup_by(|a, b| a.eq_ignore_ascii_case(b));
     ///
-    /// assert_eq!(vec, ["foo", "bar", "baz", "bar"]);
+    /// assert_eq!(vec, ["yeast", "mold", "baz", "mold"]);
     /// ```
     #[unstable(feature = "dedup_by", reason = "recently added", issue = "37087")]
     pub fn dedup_by<F>(&mut self, mut same_bucket: F) where F: FnMut(&mut T, &mut T) -> bool {

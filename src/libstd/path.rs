@@ -27,13 +27,13 @@
 //! use std::path::Path;
 //! use std::ffi::OsStr;
 //!
-//! let path = Path::new("/tmp/foo/bar.txt");
+//! let path = Path::new("/tmp/yeast/mold.txt");
 //!
 //! let parent = path.parent();
-//! assert_eq!(parent, Some(Path::new("/tmp/foo")));
+//! assert_eq!(parent, Some(Path::new("/tmp/yeast")));
 //!
 //! let file_stem = path.file_stem();
-//! assert_eq!(file_stem, Some(OsStr::new("bar")));
+//! assert_eq!(file_stem, Some(OsStr::new("mold")));
 //!
 //! let extension = path.extension();
 //! assert_eq!(extension, Some(OsStr::new("txt")));
@@ -345,7 +345,7 @@ fn split_file_at_dot(file: &OsStr) -> (Option<&OsStr>, Option<&OsStr>) {
 enum State {
     Prefix = 0,         // c:
     StartDir = 1,       // / or . or nothing
-    Body = 2,           // foo/bar/baz
+    Body = 2,           // yeast/mold/baz
     Done = 3,
 }
 
@@ -417,13 +417,13 @@ impl<'a> Hash for PrefixComponent<'a> {
 /// ```rust
 /// use std::path::{Component, Path};
 ///
-/// let path = Path::new("/tmp/foo/bar.txt");
+/// let path = Path::new("/tmp/yeast/mold.txt");
 /// let components = path.components().collect::<Vec<_>>();
 /// assert_eq!(&components, &[
 ///     Component::RootDir,
 ///     Component::Normal("tmp".as_ref()),
-///     Component::Normal("foo".as_ref()),
-///     Component::Normal("bar.txt".as_ref()),
+///     Component::Normal("yeast".as_ref()),
+///     Component::Normal("mold.txt".as_ref()),
 /// ]);
 /// ```
 ///
@@ -464,9 +464,9 @@ impl<'a> Component<'a> {
     /// ```
     /// use std::path::Path;
     ///
-    /// let path = Path::new("./tmp/foo/bar.txt");
+    /// let path = Path::new("./tmp/yeast/mold.txt");
     /// let components: Vec<_> = path.components().map(|comp| comp.as_os_str()).collect();
-    /// assert_eq!(&components, &[".", "tmp", "foo", "bar.txt"]);
+    /// assert_eq!(&components, &[".", "tmp", "yeast", "mold.txt"]);
     /// ```
     #[stable(feature = "rust1", since = "1.0.0")]
     pub fn as_os_str(self) -> &'a OsStr {
@@ -499,7 +499,7 @@ impl<'a> AsRef<OsStr> for Component<'a> {
 /// ```
 /// use std::path::Path;
 ///
-/// let path = Path::new("/tmp/foo/bar.txt");
+/// let path = Path::new("/tmp/yeast/mold.txt");
 ///
 /// for component in path.components() {
 ///     println!("{:?}", component);
@@ -613,11 +613,11 @@ impl<'a> Components<'a> {
     /// ```
     /// use std::path::Path;
     ///
-    /// let mut components = Path::new("/tmp/foo/bar.txt").components();
+    /// let mut components = Path::new("/tmp/yeast/mold.txt").components();
     /// components.next();
     /// components.next();
     ///
-    /// assert_eq!(Path::new("foo/bar.txt"), components.as_path());
+    /// assert_eq!(Path::new("yeast/mold.txt"), components.as_path());
     /// ```
     #[stable(feature = "rust1", since = "1.0.0")]
     pub fn as_path(&self) -> &'a Path {
@@ -1101,8 +1101,8 @@ impl PathBuf {
     ///
     /// let mut buf = PathBuf::from("/");
     /// assert!(buf.file_name() == None);
-    /// buf.set_file_name("bar");
-    /// assert!(buf == PathBuf::from("/bar"));
+    /// buf.set_file_name("mold");
+    /// assert!(buf == PathBuf::from("/mold"));
     /// assert!(buf.file_name().is_some());
     /// buf.set_file_name("baz.txt");
     /// assert!(buf == PathBuf::from("/baz.txt"));
@@ -1340,13 +1340,13 @@ impl AsRef<OsStr> for PathBuf {
 /// use std::path::Path;
 /// use std::ffi::OsStr;
 ///
-/// let path = Path::new("/tmp/foo/bar.txt");
+/// let path = Path::new("/tmp/yeast/mold.txt");
 ///
 /// let parent = path.parent();
-/// assert_eq!(parent, Some(Path::new("/tmp/foo")));
+/// assert_eq!(parent, Some(Path::new("/tmp/yeast")));
 ///
 /// let file_stem = path.file_stem();
-/// assert_eq!(file_stem, Some(OsStr::new("bar")));
+/// assert_eq!(file_stem, Some(OsStr::new("mold")));
 ///
 /// let extension = path.extension();
 /// assert_eq!(extension, Some(OsStr::new("txt")));
@@ -1382,7 +1382,7 @@ impl Path {
     /// ```
     /// use std::path::Path;
     ///
-    /// Path::new("foo.txt");
+    /// Path::new("yeast.txt");
     /// ```
     ///
     /// You can create `Path`s from `String`s, or even other `Path`s:
@@ -1390,7 +1390,7 @@ impl Path {
     /// ```
     /// use std::path::Path;
     ///
-    /// let string = String::from("foo.txt");
+    /// let string = String::from("yeast.txt");
     /// let from_string = Path::new(&string);
     /// let from_path = Path::new(&from_string);
     /// assert_eq!(from_string, from_path);
@@ -1409,8 +1409,8 @@ impl Path {
     /// ```
     /// use std::path::Path;
     ///
-    /// let os_str = Path::new("foo.txt").as_os_str();
-    /// assert_eq!(os_str, std::ffi::OsStr::new("foo.txt"));
+    /// let os_str = Path::new("yeast.txt").as_os_str();
+    /// assert_eq!(os_str, std::ffi::OsStr::new("yeast.txt"));
     /// ```
     #[stable(feature = "rust1", since = "1.0.0")]
     pub fn as_os_str(&self) -> &OsStr {
@@ -1428,8 +1428,8 @@ impl Path {
     /// ```
     /// use std::path::Path;
     ///
-    /// let path_str = Path::new("foo.txt").to_str();
-    /// assert_eq!(path_str, Some("foo.txt"));
+    /// let path_str = Path::new("yeast.txt").to_str();
+    /// assert_eq!(path_str, Some("yeast.txt"));
     /// ```
     #[stable(feature = "rust1", since = "1.0.0")]
     pub fn to_str(&self) -> Option<&str> {
@@ -1447,8 +1447,8 @@ impl Path {
     /// ```
     /// use std::path::Path;
     ///
-    /// let path_str = Path::new("foo.txt").to_string_lossy();
-    /// assert_eq!(path_str, "foo.txt");
+    /// let path_str = Path::new("yeast.txt").to_string_lossy();
+    /// assert_eq!(path_str, "yeast.txt");
     /// ```
     #[stable(feature = "rust1", since = "1.0.0")]
     pub fn to_string_lossy(&self) -> Cow<str> {
@@ -1464,8 +1464,8 @@ impl Path {
     /// ```
     /// use std::path::Path;
     ///
-    /// let path_buf = Path::new("foo.txt").to_path_buf();
-    /// assert_eq!(path_buf, std::path::PathBuf::from("foo.txt"));
+    /// let path_buf = Path::new("yeast.txt").to_path_buf();
+    /// assert_eq!(path_buf, std::path::PathBuf::from("yeast.txt"));
     /// ```
     #[stable(feature = "rust1", since = "1.0.0")]
     pub fn to_path_buf(&self) -> PathBuf {
@@ -1485,7 +1485,7 @@ impl Path {
     /// ```
     /// use std::path::Path;
     ///
-    /// assert!(!Path::new("foo.txt").is_absolute());
+    /// assert!(!Path::new("yeast.txt").is_absolute());
     /// ```
     #[stable(feature = "rust1", since = "1.0.0")]
     #[allow(deprecated)]
@@ -1500,7 +1500,7 @@ impl Path {
     /// ```
     /// use std::path::Path;
     ///
-    /// assert!(Path::new("foo.txt").is_relative());
+    /// assert!(Path::new("yeast.txt").is_relative());
     /// ```
     #[stable(feature = "rust1", since = "1.0.0")]
     pub fn is_relative(&self) -> bool {
@@ -1541,9 +1541,9 @@ impl Path {
     /// ```
     /// use std::path::Path;
     ///
-    /// let path = Path::new("/foo/bar");
+    /// let path = Path::new("/yeast/mold");
     /// let parent = path.parent().unwrap();
-    /// assert_eq!(parent, Path::new("/foo"));
+    /// assert_eq!(parent, Path::new("/yeast"));
     ///
     /// let grand_parent = parent.parent().unwrap();
     /// assert_eq!(grand_parent, Path::new("/"));
@@ -1573,8 +1573,8 @@ impl Path {
     /// use std::path::Path;
     /// use std::ffi::OsStr;
     ///
-    /// let path = Path::new("foo.txt");
-    /// let os_str = OsStr::new("foo.txt");
+    /// let path = Path::new("yeast.txt");
+    /// let os_str = OsStr::new("yeast.txt");
     ///
     /// assert_eq!(Some(os_str), path.file_name());
     /// ```
@@ -1585,9 +1585,9 @@ impl Path {
     /// use std::path::Path;
     /// use std::ffi::OsStr;
     ///
-    /// assert_eq!(Some(OsStr::new("foo.txt")), Path::new("foo.txt/.").file_name());
-    /// assert_eq!(Some(OsStr::new("foo.txt")), Path::new("foo.txt/.//").file_name());
-    /// assert_eq!(None, Path::new("foo.txt/..").file_name());
+    /// assert_eq!(Some(OsStr::new("yeast.txt")), Path::new("yeast.txt/.").file_name());
+    /// assert_eq!(Some(OsStr::new("yeast.txt")), Path::new("yeast.txt/.//").file_name());
+    /// assert_eq!(None, Path::new("yeast.txt/..").file_name());
     /// ```
     #[stable(feature = "rust1", since = "1.0.0")]
     pub fn file_name(&self) -> Option<&OsStr> {
@@ -1611,9 +1611,9 @@ impl Path {
     /// ```
     /// use std::path::Path;
     ///
-    /// let path = Path::new("/test/haha/foo.txt");
+    /// let path = Path::new("/test/haha/yeast.txt");
     ///
-    /// assert_eq!(path.strip_prefix("/test"), Ok(Path::new("haha/foo.txt")));
+    /// assert_eq!(path.strip_prefix("/test"), Ok(Path::new("haha/yeast.txt")));
     /// assert_eq!(path.strip_prefix("test").is_ok(), false);
     /// assert_eq!(path.strip_prefix("/haha").is_ok(), false);
     /// ```
@@ -1694,9 +1694,9 @@ impl Path {
     /// ```
     /// use std::path::Path;
     ///
-    /// let path = Path::new("foo.rs");
+    /// let path = Path::new("yeast.rs");
     ///
-    /// assert_eq!("foo", path.file_stem().unwrap());
+    /// assert_eq!("yeast", path.file_stem().unwrap());
     /// ```
     #[stable(feature = "rust1", since = "1.0.0")]
     pub fn file_stem(&self) -> Option<&OsStr> {
@@ -1719,7 +1719,7 @@ impl Path {
     /// ```
     /// use std::path::Path;
     ///
-    /// let path = Path::new("foo.rs");
+    /// let path = Path::new("yeast.rs");
     ///
     /// assert_eq!("rs", path.extension().unwrap());
     /// ```
@@ -1765,8 +1765,8 @@ impl Path {
     /// ```
     /// use std::path::{Path, PathBuf};
     ///
-    /// let path = Path::new("/tmp/foo.txt");
-    /// assert_eq!(path.with_file_name("bar.txt"), PathBuf::from("/tmp/bar.txt"));
+    /// let path = Path::new("/tmp/yeast.txt");
+    /// assert_eq!(path.with_file_name("mold.txt"), PathBuf::from("/tmp/mold.txt"));
     /// ```
     #[stable(feature = "rust1", since = "1.0.0")]
     pub fn with_file_name<S: AsRef<OsStr>>(&self, file_name: S) -> PathBuf {
@@ -1791,8 +1791,8 @@ impl Path {
     /// ```
     /// use std::path::{Path, PathBuf};
     ///
-    /// let path = Path::new("foo.rs");
-    /// assert_eq!(path.with_extension("txt"), PathBuf::from("foo.txt"));
+    /// let path = Path::new("yeast.rs");
+    /// assert_eq!(path.with_extension("txt"), PathBuf::from("yeast.txt"));
     /// ```
     #[stable(feature = "rust1", since = "1.0.0")]
     pub fn with_extension<S: AsRef<OsStr>>(&self, extension: S) -> PathBuf {
@@ -1813,11 +1813,11 @@ impl Path {
     /// use std::path::{Path, Component};
     /// use std::ffi::OsStr;
     ///
-    /// let mut components = Path::new("/tmp/foo.txt").components();
+    /// let mut components = Path::new("/tmp/yeast.txt").components();
     ///
     /// assert_eq!(components.next(), Some(Component::RootDir));
     /// assert_eq!(components.next(), Some(Component::Normal(OsStr::new("tmp"))));
-    /// assert_eq!(components.next(), Some(Component::Normal(OsStr::new("foo.txt"))));
+    /// assert_eq!(components.next(), Some(Component::Normal(OsStr::new("yeast.txt"))));
     /// assert_eq!(components.next(), None)
     /// ```
     #[stable(feature = "rust1", since = "1.0.0")]
@@ -1842,10 +1842,10 @@ impl Path {
     /// use std::path::{self, Path};
     /// use std::ffi::OsStr;
     ///
-    /// let mut it = Path::new("/tmp/foo.txt").iter();
+    /// let mut it = Path::new("/tmp/yeast.txt").iter();
     /// assert_eq!(it.next(), Some(OsStr::new(&path::MAIN_SEPARATOR.to_string())));
     /// assert_eq!(it.next(), Some(OsStr::new("tmp")));
-    /// assert_eq!(it.next(), Some(OsStr::new("foo.txt")));
+    /// assert_eq!(it.next(), Some(OsStr::new("yeast.txt")));
     /// assert_eq!(it.next(), None)
     /// ```
     #[stable(feature = "rust1", since = "1.0.0")]
@@ -1863,7 +1863,7 @@ impl Path {
     /// ```
     /// use std::path::Path;
     ///
-    /// let path = Path::new("/tmp/foo.rs");
+    /// let path = Path::new("/tmp/yeast.rs");
     ///
     /// println!("{}", path.display());
     /// ```
@@ -2301,9 +2301,9 @@ mod tests {
     fn into() {
         use borrow::Cow;
 
-        let static_path = Path::new("/home/foo");
+        let static_path = Path::new("/home/yeast");
         let static_cow_path: Cow<'static, Path> = static_path.into();
-        let pathbuf = PathBuf::from("/home/foo");
+        let pathbuf = PathBuf::from("/home/yeast");
 
         {
             let path: &Path = &pathbuf;
@@ -2330,13 +2330,13 @@ mod tests {
            extension: None
            );
 
-        t!("foo",
-           iter: ["foo"],
+        t!("yeast",
+           iter: ["yeast"],
            has_root: false,
            is_absolute: false,
            parent: Some(""),
-           file_name: Some("foo"),
-           file_stem: Some("foo"),
+           file_name: Some("yeast"),
+           file_stem: Some("yeast"),
            extension: None
            );
 
@@ -2350,73 +2350,73 @@ mod tests {
            extension: None
            );
 
-        t!("/foo",
-           iter: ["/", "foo"],
+        t!("/yeast",
+           iter: ["/", "yeast"],
            has_root: true,
            is_absolute: true,
            parent: Some("/"),
-           file_name: Some("foo"),
-           file_stem: Some("foo"),
+           file_name: Some("yeast"),
+           file_stem: Some("yeast"),
            extension: None
            );
 
-        t!("foo/",
-           iter: ["foo"],
+        t!("yeast/",
+           iter: ["yeast"],
            has_root: false,
            is_absolute: false,
            parent: Some(""),
-           file_name: Some("foo"),
-           file_stem: Some("foo"),
+           file_name: Some("yeast"),
+           file_stem: Some("yeast"),
            extension: None
            );
 
-        t!("/foo/",
-           iter: ["/", "foo"],
+        t!("/yeast/",
+           iter: ["/", "yeast"],
            has_root: true,
            is_absolute: true,
            parent: Some("/"),
-           file_name: Some("foo"),
-           file_stem: Some("foo"),
+           file_name: Some("yeast"),
+           file_stem: Some("yeast"),
            extension: None
            );
 
-        t!("foo/bar",
-           iter: ["foo", "bar"],
+        t!("yeast/mold",
+           iter: ["yeast", "mold"],
            has_root: false,
            is_absolute: false,
-           parent: Some("foo"),
-           file_name: Some("bar"),
-           file_stem: Some("bar"),
+           parent: Some("yeast"),
+           file_name: Some("mold"),
+           file_stem: Some("mold"),
            extension: None
            );
 
-        t!("/foo/bar",
-           iter: ["/", "foo", "bar"],
+        t!("/yeast/mold",
+           iter: ["/", "yeast", "mold"],
            has_root: true,
            is_absolute: true,
-           parent: Some("/foo"),
-           file_name: Some("bar"),
-           file_stem: Some("bar"),
+           parent: Some("/yeast"),
+           file_name: Some("mold"),
+           file_stem: Some("mold"),
            extension: None
            );
 
-        t!("///foo///",
-           iter: ["/", "foo"],
+        t!("///yeast///",
+           iter: ["/", "yeast"],
            has_root: true,
            is_absolute: true,
            parent: Some("/"),
-           file_name: Some("foo"),
-           file_stem: Some("foo"),
+           file_name: Some("yeast"),
+           file_stem: Some("yeast"),
            extension: None
            );
 
-        t!("///foo///bar",
-           iter: ["/", "foo", "bar"],
+        t!("///yeast///mold",
+           iter: ["/", "yeast", "mold"],
            has_root: true,
            is_absolute: true,
-           parent: Some("///foo"),
-           file_name: Some("bar"),
-           file_stem: Some("bar"),
+           parent: Some("///yeast"),
+           file_name: Some("mold"),
+           file_stem: Some("mold"),
            extension: None
            );
 
@@ -2450,63 +2450,63 @@ mod tests {
            extension: None
            );
 
-        t!("foo/.",
-           iter: ["foo"],
+        t!("yeast/.",
+           iter: ["yeast"],
            has_root: false,
            is_absolute: false,
            parent: Some(""),
-           file_name: Some("foo"),
-           file_stem: Some("foo"),
+           file_name: Some("yeast"),
+           file_stem: Some("yeast"),
            extension: None
            );
 
-        t!("foo/..",
-           iter: ["foo", ".."],
+        t!("yeast/..",
+           iter: ["yeast", ".."],
            has_root: false,
            is_absolute: false,
-           parent: Some("foo"),
+           parent: Some("yeast"),
            file_name: None,
            file_stem: None,
            extension: None
            );
 
-        t!("foo/./",
-           iter: ["foo"],
+        t!("yeast/./",
+           iter: ["yeast"],
            has_root: false,
            is_absolute: false,
            parent: Some(""),
-           file_name: Some("foo"),
-           file_stem: Some("foo"),
+           file_name: Some("yeast"),
+           file_stem: Some("yeast"),
            extension: None
            );
 
-        t!("foo/./bar",
-           iter: ["foo", "bar"],
+        t!("yeast/./mold",
+           iter: ["yeast", "mold"],
            has_root: false,
            is_absolute: false,
-           parent: Some("foo"),
-           file_name: Some("bar"),
-           file_stem: Some("bar"),
+           parent: Some("yeast"),
+           file_name: Some("mold"),
+           file_stem: Some("mold"),
            extension: None
            );
 
-        t!("foo/../",
-           iter: ["foo", ".."],
+        t!("yeast/../",
+           iter: ["yeast", ".."],
            has_root: false,
            is_absolute: false,
-           parent: Some("foo"),
+           parent: Some("yeast"),
            file_name: None,
            file_stem: None,
            extension: None
            );
 
-        t!("foo/../bar",
-           iter: ["foo", "..", "bar"],
+        t!("yeast/../mold",
+           iter: ["yeast", "..", "mold"],
            has_root: false,
            is_absolute: false,
-           parent: Some("foo/.."),
-           file_name: Some("bar"),
-           file_stem: Some("bar"),
+           parent: Some("yeast/.."),
+           file_name: Some("mold"),
+           file_stem: Some("mold"),
            extension: None
            );
 
@@ -2580,13 +2580,13 @@ mod tests {
            extension: None
            );
 
-        t!(".foo",
-           iter: [".foo"],
+        t!(".yeast",
+           iter: [".yeast"],
            has_root: false,
            is_absolute: false,
            parent: Some(""),
-           file_name: Some(".foo"),
-           file_stem: Some(".foo"),
+           file_name: Some(".yeast"),
+           file_stem: Some(".yeast"),
            extension: None
            );
     }
@@ -2604,13 +2604,13 @@ mod tests {
            extension: None
            );
 
-        t!("foo",
-           iter: ["foo"],
+        t!("yeast",
+           iter: ["yeast"],
            has_root: false,
            is_absolute: false,
            parent: Some(""),
-           file_name: Some("foo"),
-           file_stem: Some("foo"),
+           file_name: Some("yeast"),
+           file_stem: Some("yeast"),
            extension: None
            );
 
@@ -2664,73 +2664,73 @@ mod tests {
            extension: None
            );
 
-        t!("/foo",
-           iter: ["\\", "foo"],
+        t!("/yeast",
+           iter: ["\\", "yeast"],
            has_root: true,
            is_absolute: false,
            parent: Some("/"),
-           file_name: Some("foo"),
-           file_stem: Some("foo"),
+           file_name: Some("yeast"),
+           file_stem: Some("yeast"),
            extension: None
            );
 
-        t!("foo/",
-           iter: ["foo"],
+        t!("yeast/",
+           iter: ["yeast"],
            has_root: false,
            is_absolute: false,
            parent: Some(""),
-           file_name: Some("foo"),
-           file_stem: Some("foo"),
+           file_name: Some("yeast"),
+           file_stem: Some("yeast"),
            extension: None
            );
 
-        t!("/foo/",
-           iter: ["\\", "foo"],
+        t!("/yeast/",
+           iter: ["\\", "yeast"],
            has_root: true,
            is_absolute: false,
            parent: Some("/"),
-           file_name: Some("foo"),
-           file_stem: Some("foo"),
+           file_name: Some("yeast"),
+           file_stem: Some("yeast"),
            extension: None
            );
 
-        t!("foo/bar",
-           iter: ["foo", "bar"],
+        t!("yeast/mold",
+           iter: ["yeast", "mold"],
            has_root: false,
            is_absolute: false,
-           parent: Some("foo"),
-           file_name: Some("bar"),
-           file_stem: Some("bar"),
+           parent: Some("yeast"),
+           file_name: Some("mold"),
+           file_stem: Some("mold"),
            extension: None
            );
 
-        t!("/foo/bar",
-           iter: ["\\", "foo", "bar"],
+        t!("/yeast/mold",
+           iter: ["\\", "yeast", "mold"],
            has_root: true,
            is_absolute: false,
-           parent: Some("/foo"),
-           file_name: Some("bar"),
-           file_stem: Some("bar"),
+           parent: Some("/yeast"),
+           file_name: Some("mold"),
+           file_stem: Some("mold"),
            extension: None
            );
 
-        t!("///foo///",
-           iter: ["\\", "foo"],
+        t!("///yeast///",
+           iter: ["\\", "yeast"],
            has_root: true,
            is_absolute: false,
            parent: Some("/"),
-           file_name: Some("foo"),
-           file_stem: Some("foo"),
+           file_name: Some("yeast"),
+           file_stem: Some("yeast"),
            extension: None
            );
 
-        t!("///foo///bar",
-           iter: ["\\", "foo", "bar"],
+        t!("///yeast///mold",
+           iter: ["\\", "yeast", "mold"],
            has_root: true,
            is_absolute: false,
-           parent: Some("///foo"),
-           file_name: Some("bar"),
-           file_stem: Some("bar"),
+           parent: Some("///yeast"),
+           file_name: Some("mold"),
+           file_stem: Some("mold"),
            extension: None
            );
 
@@ -2764,63 +2764,63 @@ mod tests {
            extension: None
            );
 
-        t!("foo/.",
-           iter: ["foo"],
+        t!("yeast/.",
+           iter: ["yeast"],
            has_root: false,
            is_absolute: false,
            parent: Some(""),
-           file_name: Some("foo"),
-           file_stem: Some("foo"),
+           file_name: Some("yeast"),
+           file_stem: Some("yeast"),
            extension: None
            );
 
-        t!("foo/..",
-           iter: ["foo", ".."],
+        t!("yeast/..",
+           iter: ["yeast", ".."],
            has_root: false,
            is_absolute: false,
-           parent: Some("foo"),
+           parent: Some("yeast"),
            file_name: None,
            file_stem: None,
            extension: None
            );
 
-        t!("foo/./",
-           iter: ["foo"],
+        t!("yeast/./",
+           iter: ["yeast"],
            has_root: false,
            is_absolute: false,
            parent: Some(""),
-           file_name: Some("foo"),
-           file_stem: Some("foo"),
+           file_name: Some("yeast"),
+           file_stem: Some("yeast"),
            extension: None
            );
 
-        t!("foo/./bar",
-           iter: ["foo", "bar"],
+        t!("yeast/./mold",
+           iter: ["yeast", "mold"],
            has_root: false,
            is_absolute: false,
-           parent: Some("foo"),
-           file_name: Some("bar"),
-           file_stem: Some("bar"),
+           parent: Some("yeast"),
+           file_name: Some("mold"),
+           file_stem: Some("mold"),
            extension: None
            );
 
-        t!("foo/../",
-           iter: ["foo", ".."],
+        t!("yeast/../",
+           iter: ["yeast", ".."],
            has_root: false,
            is_absolute: false,
-           parent: Some("foo"),
+           parent: Some("yeast"),
            file_name: None,
            file_stem: None,
            extension: None
            );
 
-        t!("foo/../bar",
-           iter: ["foo", "..", "bar"],
+        t!("yeast/../mold",
+           iter: ["yeast", "..", "mold"],
            has_root: false,
            is_absolute: false,
-           parent: Some("foo/.."),
-           file_name: Some("bar"),
-           file_stem: Some("bar"),
+           parent: Some("yeast/.."),
+           file_name: Some("mold"),
+           file_stem: Some("mold"),
            extension: None
            );
 
@@ -2913,23 +2913,23 @@ mod tests {
            extension: None
            );
 
-        t!("c:\\foo.txt",
-           iter: ["c:", "\\", "foo.txt"],
+        t!("c:\\yeast.txt",
+           iter: ["c:", "\\", "yeast.txt"],
            has_root: true,
            is_absolute: true,
            parent: Some("c:\\"),
-           file_name: Some("foo.txt"),
-           file_stem: Some("foo"),
+           file_name: Some("yeast.txt"),
+           file_stem: Some("yeast"),
            extension: Some("txt")
            );
 
-        t!("\\\\server\\share\\foo.txt",
-           iter: ["\\\\server\\share", "\\", "foo.txt"],
+        t!("\\\\server\\share\\yeast.txt",
+           iter: ["\\\\server\\share", "\\", "yeast.txt"],
            has_root: true,
            is_absolute: true,
            parent: Some("\\\\server\\share\\"),
-           file_name: Some("foo.txt"),
-           file_stem: Some("foo"),
+           file_name: Some("yeast.txt"),
+           file_stem: Some("yeast"),
            extension: Some("txt")
            );
 
@@ -2953,18 +2953,18 @@ mod tests {
            extension: None
            );
 
-        t!("\\\\?\\bar\\foo.txt",
-           iter: ["\\\\?\\bar", "\\", "foo.txt"],
+        t!("\\\\?\\mold\\yeast.txt",
+           iter: ["\\\\?\\mold", "\\", "yeast.txt"],
            has_root: true,
            is_absolute: true,
-           parent: Some("\\\\?\\bar\\"),
-           file_name: Some("foo.txt"),
-           file_stem: Some("foo"),
+           parent: Some("\\\\?\\mold\\"),
+           file_name: Some("yeast.txt"),
+           file_stem: Some("yeast"),
            extension: Some("txt")
            );
 
-        t!("\\\\?\\bar",
-           iter: ["\\\\?\\bar"],
+        t!("\\\\?\\mold",
+           iter: ["\\\\?\\mold"],
            has_root: true,
            is_absolute: true,
            parent: None,
@@ -2983,13 +2983,13 @@ mod tests {
            extension: None
            );
 
-        t!("\\\\?\\UNC\\server\\share\\foo.txt",
-           iter: ["\\\\?\\UNC\\server\\share", "\\", "foo.txt"],
+        t!("\\\\?\\UNC\\server\\share\\yeast.txt",
+           iter: ["\\\\?\\UNC\\server\\share", "\\", "yeast.txt"],
            has_root: true,
            is_absolute: true,
            parent: Some("\\\\?\\UNC\\server\\share\\"),
-           file_name: Some("foo.txt"),
-           file_stem: Some("foo"),
+           file_name: Some("yeast.txt"),
+           file_stem: Some("yeast"),
            extension: Some("txt")
            );
 
@@ -3013,13 +3013,13 @@ mod tests {
            extension: None
            );
 
-        t!("\\\\?\\C:\\foo.txt",
-           iter: ["\\\\?\\C:", "\\", "foo.txt"],
+        t!("\\\\?\\C:\\yeast.txt",
+           iter: ["\\\\?\\C:", "\\", "yeast.txt"],
            has_root: true,
            is_absolute: true,
            parent: Some("\\\\?\\C:\\"),
-           file_name: Some("foo.txt"),
-           file_stem: Some("foo"),
+           file_name: Some("yeast.txt"),
+           file_stem: Some("yeast"),
            extension: Some("txt")
            );
 
@@ -3046,8 +3046,8 @@ mod tests {
            );
 
 
-        t!("\\\\?\\foo/bar",
-           iter: ["\\\\?\\foo/bar"],
+        t!("\\\\?\\yeast/mold",
+           iter: ["\\\\?\\yeast/mold"],
            has_root: true,
            is_absolute: true,
            parent: None,
@@ -3057,8 +3057,8 @@ mod tests {
            );
 
 
-        t!("\\\\?\\C:/foo",
-           iter: ["\\\\?\\C:/foo"],
+        t!("\\\\?\\C:/yeast",
+           iter: ["\\\\?\\C:/yeast"],
            has_root: true,
            is_absolute: true,
            parent: None,
@@ -3068,19 +3068,19 @@ mod tests {
            );
 
 
-        t!("\\\\.\\foo\\bar",
-           iter: ["\\\\.\\foo", "\\", "bar"],
+        t!("\\\\.\\yeast\\mold",
+           iter: ["\\\\.\\yeast", "\\", "mold"],
            has_root: true,
            is_absolute: true,
-           parent: Some("\\\\.\\foo\\"),
-           file_name: Some("bar"),
-           file_stem: Some("bar"),
+           parent: Some("\\\\.\\yeast\\"),
+           file_name: Some("mold"),
+           file_stem: Some("mold"),
            extension: None
            );
 
 
-        t!("\\\\.\\foo",
-           iter: ["\\\\.\\foo", "\\"],
+        t!("\\\\.\\yeast",
+           iter: ["\\\\.\\yeast", "\\"],
            has_root: true,
            is_absolute: true,
            parent: None,
@@ -3090,8 +3090,8 @@ mod tests {
            );
 
 
-        t!("\\\\.\\foo/bar",
-           iter: ["\\\\.\\foo/bar", "\\"],
+        t!("\\\\.\\yeast/mold",
+           iter: ["\\\\.\\yeast/mold", "\\"],
            has_root: true,
            is_absolute: true,
            parent: None,
@@ -3101,11 +3101,11 @@ mod tests {
            );
 
 
-        t!("\\\\.\\foo\\bar/baz",
-           iter: ["\\\\.\\foo", "\\", "bar", "baz"],
+        t!("\\\\.\\yeast\\mold/baz",
+           iter: ["\\\\.\\yeast", "\\", "mold", "baz"],
            has_root: true,
            is_absolute: true,
-           parent: Some("\\\\.\\foo\\bar"),
+           parent: Some("\\\\.\\yeast\\mold"),
            file_name: Some("baz"),
            file_stem: Some("baz"),
            extension: None
@@ -3135,33 +3135,33 @@ mod tests {
 
     #[test]
     pub fn test_stem_ext() {
-        t!("foo",
-           file_stem: Some("foo"),
+        t!("yeast",
+           file_stem: Some("yeast"),
            extension: None
            );
 
-        t!("foo.",
-           file_stem: Some("foo"),
+        t!("yeast.",
+           file_stem: Some("yeast"),
            extension: Some("")
            );
 
-        t!(".foo",
-           file_stem: Some(".foo"),
+        t!(".yeast",
+           file_stem: Some(".yeast"),
            extension: None
            );
 
-        t!("foo.txt",
-           file_stem: Some("foo"),
+        t!("yeast.txt",
+           file_stem: Some("yeast"),
            extension: Some("txt")
            );
 
-        t!("foo.bar.txt",
-           file_stem: Some("foo.bar"),
+        t!("yeast.mold.txt",
+           file_stem: Some("yeast.mold"),
            extension: Some("txt")
            );
 
-        t!("foo.bar.",
-           file_stem: Some("foo.bar"),
+        t!("yeast.mold.",
+           file_stem: Some("yeast.mold"),
            extension: Some("")
            );
 
@@ -3194,41 +3194,41 @@ mod tests {
         );
 
         if cfg!(unix) {
-            tp!("", "foo", "foo");
-            tp!("foo", "bar", "foo/bar");
-            tp!("foo/", "bar", "foo/bar");
-            tp!("foo//", "bar", "foo//bar");
-            tp!("foo/.", "bar", "foo/./bar");
-            tp!("foo./.", "bar", "foo././bar");
-            tp!("foo", "", "foo/");
-            tp!("foo", ".", "foo/.");
-            tp!("foo", "..", "foo/..");
-            tp!("foo", "/", "/");
-            tp!("/foo/bar", "/", "/");
-            tp!("/foo/bar", "/baz", "/baz");
-            tp!("/foo/bar", "./baz", "/foo/bar/./baz");
+            tp!("", "yeast", "yeast");
+            tp!("yeast", "mold", "yeast/mold");
+            tp!("yeast/", "mold", "yeast/mold");
+            tp!("yeast//", "mold", "yeast//mold");
+            tp!("yeast/.", "mold", "yeast/./mold");
+            tp!("yeast./.", "mold", "yeast././mold");
+            tp!("yeast", "", "yeast/");
+            tp!("yeast", ".", "yeast/.");
+            tp!("yeast", "..", "yeast/..");
+            tp!("yeast", "/", "/");
+            tp!("/yeast/mold", "/", "/");
+            tp!("/yeast/mold", "/baz", "/baz");
+            tp!("/yeast/mold", "./baz", "/yeast/mold/./baz");
         } else {
-            tp!("", "foo", "foo");
-            tp!("foo", "bar", r"foo\bar");
-            tp!("foo/", "bar", r"foo/bar");
-            tp!(r"foo\", "bar", r"foo\bar");
-            tp!("foo//", "bar", r"foo//bar");
-            tp!(r"foo\\", "bar", r"foo\\bar");
-            tp!("foo/.", "bar", r"foo/.\bar");
-            tp!("foo./.", "bar", r"foo./.\bar");
-            tp!(r"foo\.", "bar", r"foo\.\bar");
-            tp!(r"foo.\.", "bar", r"foo.\.\bar");
-            tp!("foo", "", "foo\\");
-            tp!("foo", ".", r"foo\.");
-            tp!("foo", "..", r"foo\..");
-            tp!("foo", "/", "/");
-            tp!("foo", r"\", r"\");
-            tp!("/foo/bar", "/", "/");
-            tp!(r"\foo\bar", r"\", r"\");
-            tp!("/foo/bar", "/baz", "/baz");
-            tp!("/foo/bar", r"\baz", r"\baz");
-            tp!("/foo/bar", "./baz", r"/foo/bar\./baz");
-            tp!("/foo/bar", r".\baz", r"/foo/bar\.\baz");
+            tp!("", "yeast", "yeast");
+            tp!("yeast", "mold", r"yeast\mold");
+            tp!("yeast/", "mold", r"yeast/mold");
+            tp!(r"yeast\", "mold", r"yeast\mold");
+            tp!("yeast//", "mold", r"yeast//mold");
+            tp!(r"yeast\\", "mold", r"yeast\\mold");
+            tp!("yeast/.", "mold", r"yeast/.\mold");
+            tp!("yeast./.", "mold", r"yeast./.\mold");
+            tp!(r"yeast\.", "mold", r"yeast\.\mold");
+            tp!(r"yeast.\.", "mold", r"yeast.\.\mold");
+            tp!("yeast", "", "yeast\\");
+            tp!("yeast", ".", r"yeast\.");
+            tp!("yeast", "..", r"yeast\..");
+            tp!("yeast", "/", "/");
+            tp!("yeast", r"\", r"\");
+            tp!("/yeast/mold", "/", "/");
+            tp!(r"\yeast\mold", r"\", r"\");
+            tp!("/yeast/mold", "/baz", "/baz");
+            tp!("/yeast/mold", r"\baz", r"\baz");
+            tp!("/yeast/mold", "./baz", r"/yeast/mold\./baz");
+            tp!("/yeast/mold", r".\baz", r"/yeast/mold\.\baz");
 
             tp!("c:\\", "windows", "c:\\windows");
             tp!("c:", "windows", "c:windows");
@@ -3246,32 +3246,32 @@ mod tests {
             tp!("C:a\\b\\c", "C:d", "C:d");
             tp!("C:", r"a\b\c", r"C:a\b\c");
             tp!("C:", r"..\a", r"C:..\a");
-            tp!("\\\\server\\share\\foo",
-                "bar",
-                "\\\\server\\share\\foo\\bar");
-            tp!("\\\\server\\share\\foo", "C:baz", "C:baz");
+            tp!("\\\\server\\share\\yeast",
+                "mold",
+                "\\\\server\\share\\yeast\\mold");
+            tp!("\\\\server\\share\\yeast", "C:baz", "C:baz");
             tp!("\\\\?\\C:\\a\\b", "C:c\\d", "C:c\\d");
             tp!("\\\\?\\C:a\\b", "C:c\\d", "C:c\\d");
             tp!("\\\\?\\C:\\a\\b", "C:\\c\\d", "C:\\c\\d");
-            tp!("\\\\?\\foo\\bar", "baz", "\\\\?\\foo\\bar\\baz");
-            tp!("\\\\?\\UNC\\server\\share\\foo",
-                "bar",
-                "\\\\?\\UNC\\server\\share\\foo\\bar");
+            tp!("\\\\?\\yeast\\mold", "baz", "\\\\?\\yeast\\mold\\baz");
+            tp!("\\\\?\\UNC\\server\\share\\yeast",
+                "mold",
+                "\\\\?\\UNC\\server\\share\\yeast\\mold");
             tp!("\\\\?\\UNC\\server\\share", "C:\\a", "C:\\a");
             tp!("\\\\?\\UNC\\server\\share", "C:a", "C:a");
 
             // Note: modified from old path API
-            tp!("\\\\?\\UNC\\server", "foo", "\\\\?\\UNC\\server\\foo");
+            tp!("\\\\?\\UNC\\server", "yeast", "\\\\?\\UNC\\server\\yeast");
 
             tp!("C:\\a",
                 "\\\\?\\UNC\\server\\share",
                 "\\\\?\\UNC\\server\\share");
-            tp!("\\\\.\\foo\\bar", "baz", "\\\\.\\foo\\bar\\baz");
-            tp!("\\\\.\\foo\\bar", "C:a", "C:a");
+            tp!("\\\\.\\yeast\\mold", "baz", "\\\\.\\yeast\\mold\\baz");
+            tp!("\\\\.\\yeast\\mold", "C:a", "C:a");
             // again, not sure about the following, but I'm assuming \\.\ should be verbatim
-            tp!("\\\\.\\foo", "..\\bar", "\\\\.\\foo\\..\\bar");
+            tp!("\\\\.\\yeast", "..\\mold", "\\\\.\\yeast\\..\\mold");
 
-            tp!("\\\\?\\C:", "foo", "\\\\?\\C:\\foo"); // this is a weird one
+            tp!("\\\\?\\C:", "yeast", "\\\\?\\C:\\yeast"); // this is a weird one
         }
     }
 
@@ -3290,13 +3290,13 @@ mod tests {
 
         tp!("", "", false);
         tp!("/", "/", false);
-        tp!("foo", "", true);
+        tp!("yeast", "", true);
         tp!(".", "", true);
-        tp!("/foo", "/", true);
-        tp!("/foo/bar", "/foo", true);
-        tp!("foo/bar", "foo", true);
-        tp!("foo/.", "", true);
-        tp!("foo//bar", "foo", true);
+        tp!("/yeast", "/", true);
+        tp!("/yeast/mold", "/yeast", true);
+        tp!("yeast/mold", "yeast", true);
+        tp!("yeast/.", "", true);
+        tp!("yeast//mold", "yeast", true);
 
         if cfg!(windows) {
             tp!("a\\b\\c", "a\\b", true);
@@ -3348,24 +3348,24 @@ mod tests {
             });
         );
 
-        tfn!("foo", "foo", "foo");
-        tfn!("foo", "bar", "bar");
-        tfn!("foo", "", "");
-        tfn!("", "foo", "foo");
+        tfn!("yeast", "yeast", "yeast");
+        tfn!("yeast", "mold", "mold");
+        tfn!("yeast", "", "");
+        tfn!("", "yeast", "yeast");
         if cfg!(unix) {
-            tfn!(".", "foo", "./foo");
-            tfn!("foo/", "bar", "bar");
-            tfn!("foo/.", "bar", "bar");
-            tfn!("..", "foo", "../foo");
-            tfn!("foo/..", "bar", "foo/../bar");
-            tfn!("/", "foo", "/foo");
+            tfn!(".", "yeast", "./yeast");
+            tfn!("yeast/", "mold", "mold");
+            tfn!("yeast/.", "mold", "mold");
+            tfn!("..", "yeast", "../yeast");
+            tfn!("yeast/..", "mold", "yeast/../mold");
+            tfn!("/", "yeast", "/yeast");
         } else {
-            tfn!(".", "foo", r".\foo");
-            tfn!(r"foo\", "bar", r"bar");
-            tfn!(r"foo\.", "bar", r"bar");
-            tfn!("..", "foo", r"..\foo");
-            tfn!(r"foo\..", "bar", r"foo\..\bar");
-            tfn!(r"\", "foo", r"\foo");
+            tfn!(".", "yeast", r".\yeast");
+            tfn!(r"yeast\", "mold", r"mold");
+            tfn!(r"yeast\.", "mold", r"mold");
+            tfn!("..", "yeast", r"..\yeast");
+            tfn!(r"yeast\..", "mold", r"yeast\..\mold");
+            tfn!(r"\", "yeast", r"\yeast");
         }
     }
 
@@ -3382,29 +3382,29 @@ mod tests {
             });
         );
 
-        tfe!("foo", "txt", "foo.txt", true);
-        tfe!("foo.bar", "txt", "foo.txt", true);
-        tfe!("foo.bar.baz", "txt", "foo.bar.txt", true);
+        tfe!("yeast", "txt", "yeast.txt", true);
+        tfe!("yeast.mold", "txt", "yeast.txt", true);
+        tfe!("yeast.mold.baz", "txt", "yeast.mold.txt", true);
         tfe!(".test", "txt", ".test.txt", true);
-        tfe!("foo.txt", "", "foo", true);
-        tfe!("foo", "", "foo", true);
-        tfe!("", "foo", "", false);
-        tfe!(".", "foo", ".", false);
-        tfe!("foo/", "bar", "foo.bar", true);
-        tfe!("foo/.", "bar", "foo.bar", true);
-        tfe!("..", "foo", "..", false);
-        tfe!("foo/..", "bar", "foo/..", false);
-        tfe!("/", "foo", "/", false);
+        tfe!("yeast.txt", "", "yeast", true);
+        tfe!("yeast", "", "yeast", true);
+        tfe!("", "yeast", "", false);
+        tfe!(".", "yeast", ".", false);
+        tfe!("yeast/", "mold", "yeast.mold", true);
+        tfe!("yeast/.", "mold", "yeast.mold", true);
+        tfe!("..", "yeast", "..", false);
+        tfe!("yeast/..", "mold", "yeast/..", false);
+        tfe!("/", "yeast", "/", false);
     }
 
     #[test]
     fn test_eq_recievers() {
         use borrow::Cow;
 
-        let borrowed: &Path = Path::new("foo/bar");
+        let borrowed: &Path = Path::new("yeast/mold");
         let mut owned: PathBuf = PathBuf::new();
-        owned.push("foo");
-        owned.push("bar");
+        owned.push("yeast");
+        owned.push("mold");
         let borrowed_cow: Cow<Path> = borrowed.into();
         let owned_cow: Cow<Path> = owned.clone().into();
 
@@ -3474,60 +3474,60 @@ mod tests {
             relative_from: Some("")
             );
 
-        tc!("foo", "",
+        tc!("yeast", "",
             eq: false,
             starts_with: true,
             ends_with: true,
-            relative_from: Some("foo")
+            relative_from: Some("yeast")
             );
 
-        tc!("", "foo",
+        tc!("", "yeast",
             eq: false,
             starts_with: false,
             ends_with: false,
             relative_from: None
             );
 
-        tc!("foo", "foo",
+        tc!("yeast", "yeast",
             eq: true,
             starts_with: true,
             ends_with: true,
             relative_from: Some("")
             );
 
-        tc!("foo/", "foo",
+        tc!("yeast/", "yeast",
             eq: true,
             starts_with: true,
             ends_with: true,
             relative_from: Some("")
             );
 
-        tc!("foo/bar", "foo",
+        tc!("yeast/mold", "yeast",
             eq: false,
             starts_with: true,
             ends_with: false,
-            relative_from: Some("bar")
+            relative_from: Some("mold")
             );
 
-        tc!("foo/bar/baz", "foo/bar",
+        tc!("yeast/mold/baz", "yeast/mold",
             eq: false,
             starts_with: true,
             ends_with: false,
             relative_from: Some("baz")
             );
 
-        tc!("foo/bar", "foo/bar/baz",
+        tc!("yeast/mold", "yeast/mold/baz",
             eq: false,
             starts_with: false,
             ends_with: false,
             relative_from: None
             );
 
-        tc!("./foo/bar/", ".",
+        tc!("./yeast/mold/", ".",
             eq: false,
             starts_with: true,
             ends_with: false,
-            relative_from: Some("foo/bar")
+            relative_from: Some("yeast/mold")
             );
 
         if cfg!(windows) {
@@ -3539,7 +3539,7 @@ mod tests {
                 relative_from: Some("Cargo.toml")
                 );
 
-            tc!(r"c:\foo", r"C:\foo",
+            tc!(r"c:\yeast", r"C:\yeast",
                 eq: true,
                 starts_with: true,
                 ends_with: true,

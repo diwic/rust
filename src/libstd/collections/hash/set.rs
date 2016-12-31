@@ -1551,30 +1551,30 @@ mod test_set {
         use hash;
 
         #[derive(Debug)]
-        struct Foo(&'static str, i32);
+        struct Yeast(&'static str, i32);
 
-        impl PartialEq for Foo {
+        impl PartialEq for Yeast {
             fn eq(&self, other: &Self) -> bool {
                 self.0 == other.0
             }
         }
 
-        impl Eq for Foo {}
+        impl Eq for Yeast {}
 
-        impl hash::Hash for Foo {
+        impl hash::Hash for Yeast {
             fn hash<H: hash::Hasher>(&self, h: &mut H) {
                 self.0.hash(h);
             }
         }
 
         let mut s = HashSet::new();
-        assert_eq!(s.replace(Foo("a", 1)), None);
+        assert_eq!(s.replace(Yeast("a", 1)), None);
         assert_eq!(s.len(), 1);
-        assert_eq!(s.replace(Foo("a", 2)), Some(Foo("a", 1)));
+        assert_eq!(s.replace(Yeast("a", 2)), Some(Yeast("a", 1)));
         assert_eq!(s.len(), 1);
 
         let mut it = s.iter();
-        assert_eq!(it.next(), Some(&Foo("a", 2)));
+        assert_eq!(it.next(), Some(&Yeast("a", 2)));
         assert_eq!(it.next(), None);
     }
 

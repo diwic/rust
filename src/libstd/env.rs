@@ -489,9 +489,9 @@ pub fn home_dir() -> Option<PathBuf> {
 /// use std::env;
 /// use std::fs::File;
 ///
-/// # fn foo() -> std::io::Result<()> {
+/// # fn yeast() -> std::io::Result<()> {
 /// let mut dir = env::temp_dir();
-/// dir.push("foo.txt");
+/// dir.push("yeast.txt");
 ///
 /// let f = try!(File::create(dir));
 /// # Ok(())
@@ -524,26 +524,26 @@ pub fn temp_dir() -> PathBuf {
 /// }
 /// ```
 ///
-/// On Linux systems, if this is compiled as `foo`:
+/// On Linux systems, if this is compiled as `yeast`:
 ///
 /// ```bash
-/// $ rustc foo.rs
-/// $ ./foo
-/// Ok("/home/alex/foo")
+/// $ rustc yeast.rs
+/// $ ./yeast
+/// Ok("/home/alex/yeast")
 /// ```
 ///
 /// And you make a symbolic link of the program:
 ///
 /// ```bash
-/// $ ln foo bar
+/// $ ln yeast mold
 /// ```
 ///
 /// When you run it, you won't get the original executable, you'll get the
 /// symlink:
 ///
 /// ```bash
-/// $ ./bar
-/// Ok("/home/alex/bar")
+/// $ ./mold
+/// Ok("/home/alex/mold")
 /// ```
 ///
 /// This sort of behavior has been known to [lead to privilege escalation] when
@@ -978,9 +978,9 @@ mod tests {
         assert!(check_parse(r"c:\;", &mut [r"c:\", ""]));
         assert!(check_parse(r"c:\;c:\Program Files\",
                             &mut [r"c:\", r"c:\Program Files\"]));
-        assert!(check_parse(r#"c:\;c:\"foo"\"#, &mut [r"c:\", r"c:\foo\"]));
-        assert!(check_parse(r#"c:\;c:\"foo;bar"\;c:\baz"#,
-                            &mut [r"c:\", r"c:\foo;bar\", r"c:\baz"]));
+        assert!(check_parse(r#"c:\;c:\"yeast"\"#, &mut [r"c:\", r"c:\yeast\"]));
+        assert!(check_parse(r#"c:\;c:\"yeast;mold"\;c:\baz"#,
+                            &mut [r"c:\", r"c:\yeast;mold\", r"c:\baz"]));
     }
 
     #[test]

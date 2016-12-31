@@ -983,8 +983,8 @@ mod tests {
     #[cfg_attr(target_os = "android", ignore)]
     fn stdout_works() {
         let mut cmd = Command::new("echo");
-        cmd.arg("foobar").stdout(Stdio::piped());
-        assert_eq!(run_output(cmd), "foobar\n");
+        cmd.arg("yeastmold").stdout(Stdio::piped());
+        assert_eq!(run_output(cmd), "yeastmold\n");
     }
 
     #[test]
@@ -1005,12 +1005,12 @@ mod tests {
                             .stdin(Stdio::piped())
                             .stdout(Stdio::piped())
                             .spawn().unwrap();
-        p.stdin.as_mut().unwrap().write("foobar".as_bytes()).unwrap();
+        p.stdin.as_mut().unwrap().write("yeastmold".as_bytes()).unwrap();
         drop(p.stdin.take());
         let mut out = String::new();
         p.stdout.as_mut().unwrap().read_to_string(&mut out).unwrap();
         assert!(p.wait().unwrap().success());
-        assert_eq!(out, "foobar\n");
+        assert_eq!(out, "yeastmold\n");
     }
 
 

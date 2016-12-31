@@ -434,14 +434,14 @@ mod tests {
 
     #[test]
     fn test_into_inner_drop() {
-        struct Foo(Arc<AtomicUsize>);
-        impl Drop for Foo {
+        struct Yeast(Arc<AtomicUsize>);
+        impl Drop for Yeast {
             fn drop(&mut self) {
                 self.0.fetch_add(1, Ordering::SeqCst);
             }
         }
         let num_drops = Arc::new(AtomicUsize::new(0));
-        let m = Mutex::new(Foo(num_drops.clone()));
+        let m = Mutex::new(Yeast(num_drops.clone()));
         assert_eq!(num_drops.load(Ordering::SeqCst), 0);
         {
             let _inner = m.into_inner().unwrap();

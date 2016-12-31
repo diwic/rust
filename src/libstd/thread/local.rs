@@ -400,11 +400,11 @@ mod tests {
     use super::LocalKeyState;
     use thread;
 
-    struct Foo(Sender<()>);
+    struct Yeast(Sender<()>);
 
-    impl Drop for Foo {
+    impl Drop for Yeast {
         fn drop(&mut self) {
-            let Foo(ref s) = *self;
+            let Yeast(ref s) = *self;
             s.send(()).unwrap();
         }
     }
@@ -433,17 +433,17 @@ mod tests {
 
     #[test]
     fn states() {
-        struct Foo;
-        impl Drop for Foo {
+        struct Yeast;
+        impl Drop for Yeast {
             fn drop(&mut self) {
                 assert!(FOO.state() == LocalKeyState::Destroyed);
             }
         }
-        fn foo() -> Foo {
+        fn yeast() -> Yeast {
             assert!(FOO.state() == LocalKeyState::Uninitialized);
-            Foo
+            Yeast
         }
-        thread_local!(static FOO: Foo = foo());
+        thread_local!(static FOO: Yeast = yeast());
 
         thread::spawn(|| {
             assert!(FOO.state() == LocalKeyState::Uninitialized);
@@ -456,13 +456,13 @@ mod tests {
 
     #[test]
     fn smoke_dtor() {
-        thread_local!(static FOO: UnsafeCell<Option<Foo>> = UnsafeCell::new(None));
+        thread_local!(static FOO: UnsafeCell<Option<Yeast>> = UnsafeCell::new(None));
 
         let (tx, rx) = channel();
         let _t = thread::spawn(move|| unsafe {
             let mut tx = Some(tx);
             FOO.with(|f| {
-                *f.get() = Some(Foo(tx.take().unwrap()));
+                *f.get() = Some(Yeast(tx.take().unwrap()));
             });
         });
         rx.recv().unwrap();
@@ -533,14 +533,14 @@ mod tests {
     fn dtors_in_dtors_in_dtors() {
         struct S1(Sender<()>);
         thread_local!(static K1: UnsafeCell<Option<S1>> = UnsafeCell::new(None));
-        thread_local!(static K2: UnsafeCell<Option<Foo>> = UnsafeCell::new(None));
+        thread_local!(static K2: UnsafeCell<Option<Yeast>> = UnsafeCell::new(None));
 
         impl Drop for S1 {
             fn drop(&mut self) {
                 let S1(ref tx) = *self;
                 unsafe {
                     if K2.state() != LocalKeyState::Destroyed {
-                        K2.with(|s| *s.get() = Some(Foo(tx.clone())));
+                        K2.with(|s| *s.get() = Some(Yeast(tx.clone())));
                     }
                 }
             }

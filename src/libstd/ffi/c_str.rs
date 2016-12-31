@@ -214,7 +214,7 @@ impl CString {
     /// ```
     /// use std::ffi::CString;
     ///
-    /// let raw = b"foo".to_vec();
+    /// let raw = b"yeast".to_vec();
     /// unsafe {
     ///     let c_string = CString::from_vec_unchecked(raw);
     /// }
@@ -389,10 +389,10 @@ impl NulError {
     /// ```
     /// use std::ffi::CString;
     ///
-    /// let nul_error = CString::new("foo\0bar").unwrap_err();
+    /// let nul_error = CString::new("yeast\0mold").unwrap_err();
     /// assert_eq!(nul_error.nul_position(), 3);
     ///
-    /// let nul_error = CString::new("foo bar\0").unwrap_err();
+    /// let nul_error = CString::new("yeast mold\0").unwrap_err();
     /// assert_eq!(nul_error.nul_position(), 7);
     /// ```
     #[stable(feature = "rust1", since = "1.0.0")]
@@ -406,8 +406,8 @@ impl NulError {
     /// ```
     /// use std::ffi::CString;
     ///
-    /// let nul_error = CString::new("foo\0bar").unwrap_err();
-    /// assert_eq!(nul_error.into_vec(), b"foo\0bar");
+    /// let nul_error = CString::new("yeast\0mold").unwrap_err();
+    /// assert_eq!(nul_error.into_vec(), b"yeast\0mold");
     /// ```
     #[stable(feature = "rust1", since = "1.0.0")]
     pub fn into_vec(self) -> Vec<u8> { self.1 }

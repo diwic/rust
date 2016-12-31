@@ -325,15 +325,15 @@
 //! use the `entry()` API to ensure that the value is initialized and perform the
 //! logic afterwards.
 //!
-//! #### Tracking the inebriation of customers at a bar
+//! #### Tracking the inebriation of customers at a mold
 //!
 //! ```
 //! use std::collections::btree_map::BTreeMap;
 //!
-//! // A client of the bar. They have a blood alcohol level.
+//! // A client of the mold. They have a blood alcohol level.
 //! struct Person { blood_alcohol: f32 }
 //!
-//! // All the orders made to the bar, by client id.
+//! // All the orders made to the mold, by client id.
 //! let orders = vec![1,2,1,2,3,4,1,2,2,3,4,1,1,1];
 //!
 //! // Our clients.
@@ -369,36 +369,36 @@
 //! use std::hash::{Hash, Hasher};
 //!
 //! #[derive(Debug)]
-//! struct Foo {
+//! struct Yeast {
 //!     a: u32,
 //!     b: &'static str,
 //! }
 //!
-//! // we will compare `Foo`s by their `a` value only.
-//! impl PartialEq for Foo {
+//! // we will compare `Yeast`s by their `a` value only.
+//! impl PartialEq for Yeast {
 //!     fn eq(&self, other: &Self) -> bool { self.a == other.a }
 //! }
 //!
-//! impl Eq for Foo {}
+//! impl Eq for Yeast {}
 //!
-//! // we will hash `Foo`s by their `a` value only.
-//! impl Hash for Foo {
+//! // we will hash `Yeast`s by their `a` value only.
+//! impl Hash for Yeast {
 //!     fn hash<H: Hasher>(&self, h: &mut H) { self.a.hash(h); }
 //! }
 //!
-//! impl PartialOrd for Foo {
+//! impl PartialOrd for Yeast {
 //!     fn partial_cmp(&self, other: &Self) -> Option<Ordering> { self.a.partial_cmp(&other.a) }
 //! }
 //!
-//! impl Ord for Foo {
+//! impl Ord for Yeast {
 //!     fn cmp(&self, other: &Self) -> Ordering { self.a.cmp(&other.a) }
 //! }
 //!
 //! let mut map = BTreeMap::new();
-//! map.insert(Foo { a: 1, b: "baz" }, 99);
+//! map.insert(Yeast { a: 1, b: "baz" }, 99);
 //!
-//! // We already have a Foo with an a of 1, so this will be updating the value.
-//! map.insert(Foo { a: 1, b: "xyz" }, 100);
+//! // We already have a Yeast with an a of 1, so this will be updating the value.
+//! map.insert(Yeast { a: 1, b: "xyz" }, 100);
 //!
 //! // The value has been updated...
 //! assert_eq!(map.values().next().unwrap(), &100);
