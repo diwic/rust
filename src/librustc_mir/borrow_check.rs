@@ -291,6 +291,7 @@ impl<'c, 'b, 'a: 'b+'c, 'gcx, 'tcx: 'a> DataflowResultsConsumer<'b, 'gcx>
 
             TerminatorKind::Goto { target: _ } |
             TerminatorKind::Resume |
+            TerminatorKind::Abort |
             TerminatorKind::Return |
             TerminatorKind::GeneratorDrop |
             TerminatorKind::Unreachable => {

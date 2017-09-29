@@ -563,6 +563,14 @@ impl<'a, 'gcx, 'tcx> Builder<'a, 'gcx, 'tcx> {
         }
     }
 
+    pub fn schedule_abort(&mut self) -> BasicBlock {
+        self.scopes[0].needs_cleanup = true;
+        let abortblk = self.cfg.start_new_cleanup_block();
+        self.cfg.terminate(abortblk, self.scopes[0].source_info(self.fn_span), TerminatorKind::Abort);
+        self.cached_resume_block = Some(abortblk);
+        abortblk
+    }
+
     // Scheduling drops
     // ================
     /// Indicates that `lvalue` should be dropped on exit from

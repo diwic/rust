@@ -713,6 +713,9 @@ impl<'a, 'tcx> MutVisitor<'tcx> for Integrator<'a, 'tcx> {
                     *kind = TerminatorKind::Goto { target: tgt }
                 }
             }
+            TerminatorKind::Abort => {
+                unimplemented!("I assume here's where we're supposed to insert a call to intrinsics::abort?");
+            }
             TerminatorKind::Unreachable => { }
         }
     }

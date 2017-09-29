@@ -575,6 +575,10 @@ pub enum TerminatorKind<'tcx> {
     /// continue. Emitted by build::scope::diverge_cleanup.
     Resume,
 
+    /// Indicates that the landing pad is finished and that the process
+    /// should abort. Used to prevent unwinding for foreign items.
+    Abort,
+
     /// Indicates a normal return. The return pointer lvalue should
     /// have been filled in by now. This should occur at most once.
     Return,
@@ -660,7 +664,7 @@ impl<'tcx> TerminatorKind<'tcx> {
         match *self {
             Goto { target: ref b } => slice::ref_slice(b).into_cow(),
             SwitchInt { targets: ref b, .. } => b[..].into_cow(),
-            Resume | GeneratorDrop => (&[]).into_cow(),
+            Resume | Abort | GeneratorDrop => (&[]).into_cow(),
             Return => (&[]).into_cow(),
             Unreachable => (&[]).into_cow(),
             Call { destination: Some((_, t)), cleanup: Some(c), .. } => vec![t, c].into_cow(),
@@ -690,7 +694,7 @@ impl<'tcx> TerminatorKind<'tcx> {
         match *self {
             Goto { target: ref mut b } => vec![b],
             SwitchInt { targets: ref mut b, .. } => b.iter_mut().collect(),
-            Resume | GeneratorDrop => Vec::new(),
+            Resume | Abort | GeneratorDrop => Vec::new(),
             Return => Vec::new(),
             Unreachable => Vec::new(),
             Call { destination: Some((_, ref mut t)), cleanup: Some(ref mut c), .. } => vec![t, c],
@@ -780,6 +784,7 @@ impl<'tcx> TerminatorKind<'tcx> {
             Return => write!(fmt, "return"),
             GeneratorDrop => write!(fmt, "generator_drop"),
             Resume => write!(fmt, "resume"),
+            Abort => write!(fmt, "abort"),
             Yield { ref value, .. } => write!(fmt, "_1 = suspend({:?})", value),
             Unreachable => write!(fmt, "unreachable"),
             Drop { ref location, .. } => write!(fmt, "drop({:?})", location),
@@ -831,7 +836,7 @@ impl<'tcx> TerminatorKind<'tcx> {
     pub fn fmt_successor_labels(&self) -> Vec<Cow<'static, str>> {
         use self::TerminatorKind::*;
         match *self {
-            Return | Resume | Unreachable | GeneratorDrop => vec![],
+            Return | Resume | Abort | Unreachable | GeneratorDrop => vec![],
             Goto { .. } => vec!["".into()],
             SwitchInt { ref values, .. } => {
                 values.iter()
@@ -1806,6 +1811,7 @@ impl<'tcx> TypeFoldable<'tcx> for Terminator<'tcx> {
             },
             GeneratorDrop => GeneratorDrop,
             Resume => Resume,
+            Abort => Abort,
             Return => Return,
             Unreachable => Unreachable,
         };
@@ -1845,6 +1851,7 @@ impl<'tcx> TypeFoldable<'tcx> for Terminator<'tcx> {
             },
             Goto { .. } |
             Resume |
+            Abort |
             Return |
             GeneratorDrop |
             Unreachable => false

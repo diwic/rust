@@ -54,6 +54,7 @@ for mir::Terminator<'gcx> {
             mir::TerminatorKind::Goto { .. } |
             mir::TerminatorKind::SwitchInt { .. } |
             mir::TerminatorKind::Resume |
+            mir::TerminatorKind::Abort |
             mir::TerminatorKind::Return |
             mir::TerminatorKind::GeneratorDrop |
             mir::TerminatorKind::Unreachable |
@@ -148,6 +149,7 @@ for mir::TerminatorKind<'gcx> {
                 targets.hash_stable(hcx, hasher);
             }
             mir::TerminatorKind::Resume |
+            mir::TerminatorKind::Abort |
             mir::TerminatorKind::Return |
             mir::TerminatorKind::GeneratorDrop |
             mir::TerminatorKind::Unreachable => {}

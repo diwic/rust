@@ -170,6 +170,13 @@ impl<'a, 'tcx> MirContext<'a, 'tcx> {
 
         self.set_debug_loc(&bcx, terminator.source_info);
         match terminator.kind {
+            mir::TerminatorKind::Abort => {
+                // Call core::intrinsics::abort()
+                let fnname = bcx.ccx.get_intrinsic(&("llvm.trap"));
+                bcx.call(fnname, &[], None);
+                bcx.unreachable();
+            }
+
             mir::TerminatorKind::Resume => {
                 if let Some(cleanup_pad) = cleanup_pad {
                     bcx.cleanup_ret(cleanup_pad, None);

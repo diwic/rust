@@ -378,10 +378,27 @@ fn construct_fn<'a, 'gcx, 'tcx, A>(hir: Cx<'a, 'gcx, 'tcx>,
     let arg_scope = region::Scope::Arguments(body.value.hir_id.local_id);
     let mut block = START_BLOCK;
     let source_info = builder.source_info(span);
+
     unpack!(block = builder.in_scope((call_site_scope, source_info), block, |builder| {
+
+        // According to rustc_trans/callee we mark all foreign instances with nounwind,
+        // so let's make sure we don't unwind.
+        // Therefore generate an extra "Abort" landing pad.
+
+        // This does not work :-(
+        // let is_foreign = tcx.is_foreign_item(tcx.hir.local_def_id(fn_id));
+        let is_foreign = match abi {
+            Abi::Rust | Abi::RustCall | Abi::RustIntrinsic => false,
+            _ => true,
+        };
+        if is_foreign && !tcx.sess.no_landing_pads() {
+            builder.schedule_abort();
+        };
+
         unpack!(block = builder.in_scope((arg_scope, source_info), block, |builder| {
             builder.args_and_body(block, &arguments, arg_scope, &body.value)
         }));
+
         // Attribute epilogue to function's closing brace
         let fn_end = span.with_lo(span.hi());
         let source_info = builder.source_info(fn_end);
